@@ -434,81 +434,437 @@
   .foot-links{display:flex;gap:20px;font-size:13px;color:var(--ink-soft);}
   .foot-links a{text-decoration:none;}
   .foot-ar{font-family:var(--arabic);font-size:13px;color:var(--ink-faint);}
+
+  /* ---------- HERO REDESIGN (DARK ATMOSPHERIC WITH RIYADH SKYLINE) ---------- */
+  .hero-outer-container {
+    position: relative;
+    background-image: 
+      linear-gradient(90deg, rgba(12, 18, 15, 0.94) 0%, rgba(12, 18, 15, 0.88) 45%, rgba(12, 18, 15, 0.72) 75%, rgba(12, 18, 15, 0.55) 100%),
+      linear-gradient(180deg, rgba(12, 18, 15, 0.75) 0%, rgba(12, 18, 15, 0.45) 50%, rgba(12, 18, 15, 0.98) 100%),
+      url('assets/riyadh_skyline.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    color: #FFFFFF;
+    overflow: hidden;
+  }
+
+  header.site {
+    padding: 18px 0;
+    position: sticky;
+    top: 0;
+    background: rgba(12, 18, 15, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    z-index: 100;
+  }
+  .logo { color: #FFFFFF; font-family: var(--mono); font-size: 15px; letter-spacing: 0.02em; }
+  .logo b { color: #FFFFFF; font-weight: 700; }
+  .logo span { color: var(--gold); }
+  .nav-links a { color: rgba(255, 255, 255, 0.75); text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover { color: #FFFFFF; }
+  .nav-cta {
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 20px;
+    background: var(--gold);
+    color: #0E1411;
+    border-radius: 100px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+  .nav-cta:hover { background: #D4A853; transform: translateY(-1px); }
+
+  .hero-strip {
+    background: rgba(10, 16, 13, 0.75) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+  .hero-strip span { color: rgba(255, 255, 255, 0.6) !important; }
+
+  .hero-dark {
+    padding: 60px 0 70px 0;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.12fr 0.88fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .hero-eyebrow-dark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 22px;
+  }
+  .hero-eyebrow-dark::before {
+    content: "";
+    width: 20px;
+    height: 2px;
+    background: var(--gold);
+    display: inline-block;
+  }
+  .hero-eyebrow-dark .ar-badge {
+    background: rgba(255, 255, 255, 0.12);
+    color: #DCEFE6;
+    font-family: var(--arabic);
+    padding: 2px 10px;
+    border-radius: 100px;
+    font-size: 12px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  h1.hero-h-dark {
+    font-family: var(--serif);
+    font-size: clamp(34px, 4.8vw, 54px);
+    line-height: 1.1;
+    margin-bottom: 22px;
+    color: #FFFFFF;
+    font-weight: 500;
+  }
+  h1.hero-h-dark .gold-italic {
+    font-style: italic;
+    color: var(--gold);
+    font-family: var(--serif);
+  }
+
+  .hero-sub-dark {
+    font-size: 17px;
+    line-height: 1.65;
+    color: rgba(235, 240, 237, 0.88);
+    max-width: 580px;
+    margin-bottom: 32px;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .btn-gold {
+    background: var(--gold);
+    color: #0E1411;
+    border: none;
+    padding: 15px 28px;
+    border-radius: 100px;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 20px rgba(185, 137, 62, 0.35);
+    transition: all 0.2s ease;
+  }
+  .btn-gold:hover {
+    background: #D4A853;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(185, 137, 62, 0.5);
+  }
+
+  .btn-whatsapp {
+    background: rgba(14, 107, 79, 0.85);
+    border: 1px solid rgba(46, 204, 113, 0.4);
+    color: #FFFFFF;
+    padding: 14px 24px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+  }
+  .btn-whatsapp:hover {
+    background: #0E6B4F;
+    border-color: #2ECC71;
+    transform: translateY(-2px);
+  }
+
+  .hero-note-dark {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.65);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  .hero-note-dark .ar {
+    font-family: var(--arabic);
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .hero-stats-row {
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .h-stat .num {
+    font-family: var(--serif);
+    font-size: 30px;
+    color: var(--gold);
+    font-weight: 500;
+    line-height: 1;
+  }
+  .h-stat .lbl {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+    margin-top: 6px;
+  }
+
+  /* Right column mockup window */
+  .hero-mockup-wrapper {
+    position: relative;
+  }
+  .mockup-window {
+    background: rgba(18, 26, 22, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7), 0 0 35px rgba(185, 137, 62, 0.14);
+    backdrop-filter: blur(12px);
+  }
+  .mockup-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: rgba(10, 16, 13, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .mockup-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+  }
+  .mockup-dot.red { background: #FF5F56; }
+  .mockup-dot.yellow { background: #FFBD2E; }
+  .mockup-dot.green { background: #27C93F; }
+  .mockup-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.55);
+    margin-left: 6px;
+  }
+  .mockup-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Dark Ops Card inside Right Mockup */
+  .dark-ops-card {
+    background: rgba(10, 16, 13, 0.95);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 16px 20px;
+  }
+  .board-head-dark {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .board-head-dark .t {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+  }
+  .board-head-dark .live-dot {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: #2ECC71;
+  }
+  .board-head-dark .live-dot::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #2ECC71;
+    animation: pulse 2s infinite;
+  }
+  .dark-board-row {
+    display: grid;
+    grid-template-columns: 1.2fr 0.7fr 1.1fr;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    font-size: 12px;
+  }
+  .dark-board-row:last-child { border-bottom: none; }
+  .dark-board-row .city { font-weight: 700; color: #FFFFFF; }
+  .dark-board-row .city .sub { display: block; font-size: 10px; color: rgba(255, 255, 255, 0.5); font-weight: 400; }
+  .dark-board-row .fmt {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    width: fit-content;
+  }
+  .dark-board-row .status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 11.5px;
+    justify-self: end;
+  }
+
+  .ksa-stripe {
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(90deg, #0E6B4F 0%, #0E6B4F 70%, #FFFFFF 70%, #FFFFFF 85%, #B9893E 85%, #B9893E 100%);
+  }
+
+  @media (max-width: 980px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+    .hero-stats-row { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 580px) {
+    .hero-stats-row { grid-template-columns: 1fr; gap: 14px; }
+  }
 </style>
 </head>
 <body>
 
-<header class="site">
-  <div class="wrap nav-row">
-    <div class="logo"><b>SimpliTrain</b> · KSA</div>
-    <nav class="nav-links">
-      <a href="#reality">The Market</a>
-      <a href="#platform">Platform</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#industries">Industries</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <a class="nav-cta" href="#cta">Book a Demo</a>
-  </div>
-</header>
+<div class="hero-outer-container">
+  <header class="site">
+    <div class="wrap nav-row">
+      <div class="logo"><b>SimpliTrain</b> <span>· KSA</span></div>
+      <nav class="nav-links">
+        <a href="#reality">The Market</a>
+        <a href="#platform">Platform</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#industries">Industries</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="nav-cta" href="#cta">Book a Demo</a>
+    </div>
+  </header>
 
-<div class="strip" aria-hidden="true">
-  <span>RIYADH — 09:00 ILT&nbsp;&nbsp;&nbsp;&nbsp;JEDDAH — 11:30 vILT&nbsp;&nbsp;&nbsp;&nbsp;DAMMAM — 14:00 BLENDED&nbsp;&nbsp;&nbsp;&nbsp;RIYADH — 09:00 ILT&nbsp;&nbsp;&nbsp;&nbsp;JEDDAH — 11:30 vILT&nbsp;&nbsp;&nbsp;&nbsp;DAMMAM — 14:00 BLENDED</span>
+  <div class="strip hero-strip" aria-hidden="true">
+    <span>RIYADH — 09:00 ILT&nbsp;&nbsp;&nbsp;&nbsp;JEDDAH — 11:30 vILT&nbsp;&nbsp;&nbsp;&nbsp;DAMMAM — 14:00 BLENDED&nbsp;&nbsp;&nbsp;&nbsp;RIYADH — 09:00 ILT&nbsp;&nbsp;&nbsp;&nbsp;JEDDAH — 11:30 vILT&nbsp;&nbsp;&nbsp;&nbsp;DAMMAM — 14:00 BLENDED</span>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero-dark">
+    <div class="wrap hero-grid">
+      <!-- LEFT COLUMN -->
+      <div class="hero-left">
+        <div class="hero-eyebrow-dark">
+          <span>TRAINING MANAGEMENT SYSTEM · SAUDI ARABIA</span>
+          <span class="ar-badge" lang="ar">الآن في السعودية</span>
+        </div>
+        <h1 class="hero-h-dark">
+          More training. <em class="gold-italic">More cities.</em><br>
+          Same team, full control.
+        </h1>
+        <p class="hero-sub-dark">
+          SimpliTrain runs instructor-led and virtual instructor-led training for organizations scaling across Riyadh, Jeddah, Dammam, and beyond — scheduling, delivery, and certification, in one platform, in Arabic and English.
+        </p>
+        <div class="hero-cta-group">
+          <a class="btn-gold" href="#cta">Book a Demo</a>
+          <a class="btn-whatsapp" href="https://wa.me/" target="_blank">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Chat on WhatsApp
+          </a>
+        </div>
+        <p class="hero-note-dark">
+          <span>30-minute session, on your own training programs.</span>
+          <span class="ar" lang="ar">نعرض لكم المنصة على بياناتكم الفعلية.</span>
+        </p>
+
+        <!-- STATS ROW MATCHING REFERENCE DESIGN -->
+        <div class="hero-stats-row">
+          <div class="h-stat">
+            <div class="num">58%</div>
+            <div class="lbl">Faster Scheduling</div>
+          </div>
+          <div class="h-stat">
+            <div class="num">84%</div>
+            <div class="lbl">Trainer Utilization</div>
+          </div>
+          <div class="h-stat">
+            <div class="num">4 → 1</div>
+            <div class="lbl">Systems Consolidated</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN (FLOATING MOCKUP & LIVE OPS BOARD) -->
+      <div class="hero-right">
+        <div class="hero-mockup-wrapper">
+          <div class="mockup-window">
+            <div class="mockup-bar">
+              <span class="mockup-dot red"></span>
+              <span class="mockup-dot yellow"></span>
+              <span class="mockup-dot green"></span>
+              <span class="mockup-title">SimpliTrain TMS — KSA Operations</span>
+            </div>
+            <img src="assets/dashboard_mockup.png" alt="SimpliTrain TMS Dashboard Mockup" class="mockup-img">
+            
+            <!-- TODAY'S OPERATIONS WIDGET OVERLAY -->
+            <div class="dark-ops-card">
+              <div class="board-head-dark">
+                <span class="t">Today's Operations — All KSA Locations</span>
+                <span class="live-dot">Live</span>
+              </div>
+              <div class="dark-board-row">
+                <div class="city">Riyadh <span class="sub">Leadership Dev</span></div>
+                <div class="fmt">ILT</div>
+                <div class="status"><span class="dot green"></span>42 learners · On track</div>
+              </div>
+              <div class="dark-board-row">
+                <div class="city">Jeddah <span class="sub">Safety Cert</span></div>
+                <div class="fmt">vILT</div>
+                <div class="status"><span class="dot blue"></span>118 learners · Live now</div>
+              </div>
+              <div class="dark-board-row">
+                <div class="city">Dammam <span class="sub">Tech Onboarding</span></div>
+                <div class="fmt">Blended</div>
+                <div class="status"><span class="dot amber"></span>76 learners · Starts 14:00</div>
+              </div>
+              <div class="dark-board-row">
+                <div class="city">Eastern Prov <span class="sub">HSE Recert</span></div>
+                <div class="fmt">ILT</div>
+                <div class="status"><span class="dot green"></span>205 learners · On track</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KSA ACCENT RIBBON -->
+  <div class="ksa-stripe"></div>
 </div>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap hero-top">
-    <div class="hero-eyebrow-row">
-      <span class="eyebrow">SimpliTrain in Saudi Arabia</span>
-      <span class="eyebrow ar" lang="ar">الآن في السعودية</span>
-    </div>
-    <h1 class="hero-h">More training. <em>More cities.</em> Same team, full control.</h1>
-    <p class="hero-sub">SimpliTrain runs instructor-led and virtual instructor-led training for organizations scaling across Riyadh, Jeddah, Dammam, and beyond — scheduling, delivery, and certification, in one platform, in Arabic and English.</p>
-    <div class="cta-row">
-      <a class="btn-primary" href="#cta">Book a Demo</a>
-      <a class="btn-secondary" href="#platform">See How It Works</a>
-    </div>
-    <p class="cta-note" style="margin-top:16px;">30-minute session, on your own training programs. <span class="ar" lang="ar">نعرض لكم المنصة على بياناتكم الفعلية.</span></p>
-  </div>
-
-  <div class="wrap">
-    <div class="board">
-      <div class="board-head">
-        <span class="t">Today's Operations — All Locations</span>
-        <span class="live">Live</span>
-      </div>
-      <div class="board-row">
-        <div class="city">Riyadh <span class="sub">Leadership Development</span></div>
-        <div></div>
-        <div class="fmt">ILT</div>
-        <div style="font-size:12.5px;color:var(--ink-faint);">42 learners</div>
-        <div class="status"><span class="dot green"></span>On track</div>
-      </div>
-      <div class="board-row">
-        <div class="city">Jeddah <span class="sub">Safety Certification</span></div>
-        <div></div>
-        <div class="fmt">vILT</div>
-        <div style="font-size:12.5px;color:var(--ink-faint);">118 learners</div>
-        <div class="status"><span class="dot blue"></span>Live now</div>
-      </div>
-      <div class="board-row">
-        <div class="city">Dammam <span class="sub">Technical Onboarding</span></div>
-        <div></div>
-        <div class="fmt">Blended</div>
-        <div style="font-size:12.5px;color:var(--ink-faint);">76 learners</div>
-        <div class="status"><span class="dot amber"></span>Starts 14:00</div>
-      </div>
-      <div class="board-row">
-        <div class="city">Eastern Province <span class="sub">HSE Recertification</span></div>
-        <div></div>
-        <div class="fmt">ILT</div>
-        <div style="font-size:12.5px;color:var(--ink-faint);">205 learners</div>
-        <div class="status"><span class="dot green"></span>On track</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <div class="strip" aria-hidden="true">
   <span>82% TRAINER UTILIZATION&nbsp;&nbsp;&nbsp;&nbsp;4 SYSTEMS → 1&nbsp;&nbsp;&nbsp;&nbsp;UNLIMITED LEARNERS&nbsp;&nbsp;&nbsp;&nbsp;82% TRAINER UTILIZATION&nbsp;&nbsp;&nbsp;&nbsp;4 SYSTEMS → 1&nbsp;&nbsp;&nbsp;&nbsp;UNLIMITED LEARNERS</span>
