@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <style>
   :root{
     --bg:#F7F5F0;
@@ -744,8 +746,142 @@
     .hero-grid { grid-template-columns: 1fr; gap: 36px; }
     .hero-stats-row { grid-template-columns: repeat(3, 1fr); }
   }
-  @media (max-width: 580px) {
-    .hero-stats-row { grid-template-columns: 1fr; gap: 14px; }
+  /* ---------- INTERACTIVE PAIN SWITCHER ---------- */
+  .pain-toggle-bar {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .pain-toggle-btn {
+    padding: 12px 26px;
+    border-radius: 100px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .pain-toggle-btn.active.bad {
+    background: #FFF2F0;
+    border-color: #E74C3C;
+    color: #C0392B;
+    box-shadow: 0 4px 14px rgba(231,76,60,0.15);
+  }
+  .pain-toggle-btn.active.good {
+    background: var(--green-deep);
+    border-color: var(--green-deep);
+    color: #FFFFFF;
+    box-shadow: 0 4px 14px rgba(14,107,79,0.25);
+  }
+
+  .pain-view {
+    display: none;
+    opacity: 0;
+  }
+  .pain-view.active {
+    display: block;
+    opacity: 1;
+  }
+
+  /* ---------- INTERACTIVE PLATFORM SHOWCASE HUB ---------- */
+  .platform-hub {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 36px;
+    align-items: center;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 36px;
+    box-shadow: 0 20px 40px -20px rgba(0,0,0,0.06);
+  }
+
+  .platform-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .platform-tab {
+    padding: 18px 22px;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: var(--bg);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .platform-tab:hover {
+    background: var(--bg-alt);
+    transform: translateX(4px);
+  }
+
+  .platform-tab.active {
+    background: var(--green-deep);
+    color: #FFFFFF;
+    border-color: var(--green-deep);
+    box-shadow: 0 10px 25px -5px rgba(14,107,79,0.3);
+  }
+
+  .platform-tab .tab-step {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .platform-tab.active .tab-step {
+    color: #CDEBDD;
+  }
+
+  .platform-tab h3 {
+    font-size: 17px;
+    margin-bottom: 4px;
+  }
+  .platform-tab.active h3 {
+    color: #FFFFFF;
+  }
+
+  .platform-tab p {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    display: none;
+  }
+  .platform-tab.active p {
+    display: block;
+    color: rgba(255,255,255,0.88);
+    margin-top: 6px;
+  }
+
+  .platform-stage {
+    position: relative;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 28px;
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stage-panel {
+    display: none;
+    width: 100%;
+  }
+  .stage-panel.active {
+    display: block;
+  }
+
+  @media (max-width: 900px) {
+    .platform-hub { grid-template-columns: 1fr; padding: 24px; }
   }
 </style>
 </head>
@@ -885,135 +1021,126 @@
   </div>
 </section>
 
-<!-- THE REAL PAIN -->
+<!-- THE REAL PAIN (INTERACTIVE BEFORE / AFTER TOGGLE) -->
 <section class="section alt" id="reality2">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">The Part No One Puts On A Slide</span>
       <h2>Growth is good. Running it on a spreadsheet is not.</h2>
-      <p>None of this is unique to Saudi Arabia — it's just happening faster here right now. If any of this sounds like a Tuesday, you're not alone.</p>
-    </div>
-    <div class="pain-grid">
-      <div class="pain-item"><span class="mark">01</span><span>A trainer double-booked across Riyadh and Jeddah on the same morning, discovered the night before.</span></div>
-      <div class="pain-item"><span class="mark">02</span><span>Instructor availability tracked in a shared sheet that's always one edit behind what's actually true.</span></div>
-      <div class="pain-item"><span class="mark">03</span><span>Certificates issued by hand, days after a session ends, because no one owns that step.</span></div>
-      <div class="pain-item"><span class="mark">04</span><span>A WhatsApp group standing in for a real booking and attendance system.</span></div>
-      <div class="pain-item"><span class="mark">05</span><span>No single view of which trainer is overbooked in Dammam and which one is idle in Riyadh.</span></div>
-      <div class="pain-item"><span class="mark">06</span><span>Adding a new training center means adding a new spreadsheet, not extending the one system you already trust.</span></div>
+      <p>Compare how corporate training is run today versus running it on SimpliTrain.</p>
     </div>
 
-    <div class="flip">
-      <div class="before">
-        <h3>Coordinating It Today</h3>
-        <ol>
-          <li><span class="step">01</span>Trainer schedules live in three different spreadsheets across three cities.</li>
-          <li><span class="step">02</span>Attendance is marked on paper, then re-typed later — if it's typed at all.</li>
-          <li><span class="step">03</span>Certificates are built one by one in a document editor.</li>
-          <li><span class="step">04</span>No one can say, today, exactly how many sessions are running or who's running them.</li>
-        </ol>
+    <!-- TOGGLE BUTTONS -->
+    <div class="pain-toggle-bar">
+      <button class="pain-toggle-btn active bad" id="btn-today">Coordinating It Today (Spreadsheet Chaos)</button>
+      <button class="pain-toggle-btn good" id="btn-simplitrain">Running On SimpliTrain (Automated)</button>
+    </div>
+
+    <!-- VIEW 1: TODAY (SPREADSHEET CHAOS) -->
+    <div class="pain-view active" id="view-today">
+      <div class="pain-grid">
+        <div class="pain-item"><span class="mark" style="color:#E74C3C;">❌</span><span>Double-booked instructors discovered the night before a session.</span></div>
+        <div class="pain-item"><span class="mark" style="color:#E74C3C;">❌</span><span>Instructor availability tracked in out-of-date shared spreadsheets.</span></div>
+        <div class="pain-item"><span class="mark" style="color:#E74C3C;">❌</span><span>Certificates built manually one-by-one in document editors.</span></div>
+        <div class="pain-item"><span class="mark" style="color:#E74C3C;">❌</span><span>WhatsApp groups used as an unofficial booking system.</span></div>
+        <div class="pain-item"><span class="mark" style="color:#E74C3C;">❌</span><span>No clear visibility on trainer capacity in Riyadh vs. Dammam.</span></div>
+        <div class="pain-item"><span class="mark" style="color:#E74C3C;">❌</span><span>Paper attendance sheets that get re-typed days later or lost.</span></div>
       </div>
-      <div class="after">
-        <h3>Running On SimpliTrain</h3>
-        <ol>
-          <li><span class="step">01</span>Every trainer, room, and city on one live calendar.</li>
-          <li><span class="step">02</span>Attendance captured automatically, in the room or on the call.</li>
-          <li><span class="step">03</span>Certificates generated the moment a session is marked complete.</li>
-          <li><span class="step">04</span>One dashboard shows every session, every city, right now.</li>
-        </ol>
+    </div>
+
+    <!-- VIEW 2: SIMPLITRAIN WAY -->
+    <div class="pain-view" id="view-simplitrain">
+      <div class="pain-grid">
+        <div class="pain-item" style="border-color:var(--green); background:#F4FAF7;"><span class="mark" style="color:var(--green);">✓</span><span>Every instructor, classroom, and city live on one conflict-free calendar.</span></div>
+        <div class="pain-item" style="border-color:var(--green); background:#F4FAF7;"><span class="mark" style="color:var(--green);">✓</span><span>Real-time availability and automatic conflict alerts.</span></div>
+        <div class="pain-item" style="border-color:var(--green); background:#F4FAF7;"><span class="mark" style="color:var(--green);">✓</span><span>Certificates generated automatically 4 seconds after session ends.</span></div>
+        <div class="pain-item" style="border-color:var(--green); background:#F4FAF7;"><span class="mark" style="color:var(--green);">✓</span><span>Centralized booking portal for trainers, admins, and learners.</span></div>
+        <div class="pain-item" style="border-color:var(--green); background:#F4FAF7;"><span class="mark" style="color:var(--green);">✓</span><span>One real-time dashboard showing utilization across all KSA locations.</span></div>
+        <div class="pain-item" style="border-color:var(--green); background:#F4FAF7;"><span class="mark" style="color:var(--green);">✓</span><span>Digital attendance captured automatically via room or Zoom/Teams.</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PLATFORM -->
+<!-- PLATFORM SHOWCASE HUB (GSAP INTERACTIVE) -->
 <section class="section" id="platform">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">The Platform</span>
       <h2>Everything it takes to run ILT and vILT at scale, in one place.</h2>
-      <p>Plan it, deliver it, prove it happened, then use the data to run the program better next quarter.</p>
+      <p>Click through the modules below to see how SimpliTrain streamlines scheduling, delivery, certification, and reporting across Saudi Arabia.</p>
     </div>
 
-    <div class="product-block">
-      <div>
-        <div class="pb-index">01 / PLAN &amp; SCHEDULE</div>
-        <h3>Coordinate every session, trainer, and room from one calendar.</h3>
-        <p class="desc">Whether you're running training out of one center in Riyadh or twelve across the Kingdom, scheduling stops being a full-time job for one very tired coordinator.</p>
-        <ul>
-          <li>Session and cohort scheduling across every location</li>
-          <li>Trainer allocation based on real availability, not memory</li>
-          <li>Room and resource booking built in</li>
-          <li>One calendar for classroom, virtual, and blended sessions</li>
-        </ul>
-      </div>
-      <div class="pb-visual">
-        <div class="mini-cal">
-          <div class="d">MON</div><div class="d">TUE</div><div class="d">WED</div><div class="d">THU</div><div class="d">FRI</div>
-          <div class="d on">RUH</div><div class="d">—</div><div class="d busy">JED</div><div class="d">—</div><div class="d on">DMM</div>
-          <div class="d">—</div><div class="d on">RUH</div><div class="d">—</div><div class="d busy">JED</div><div class="d">—</div>
-          <div class="d busy">DMM</div><div class="d">—</div><div class="d on">RUH</div><div class="d">—</div><div class="d">—</div>
+    <div class="platform-hub">
+      <!-- LEFT TAB SELECTOR -->
+      <div class="platform-nav">
+        <div class="platform-tab active" data-target="panel-plan">
+          <div class="tab-step">01 / PLAN &amp; SCHEDULE</div>
+          <h3>Multi-City Calendar &amp; Allocation</h3>
+          <p>Coordinate every instructor, classroom, and cohort across Riyadh, Jeddah, Dammam from one unified calendar.</p>
+        </div>
+        <div class="platform-tab" data-target="panel-deliver">
+          <div class="tab-step">02 / DELIVER (ILT &amp; vILT)</div>
+          <h3>Classroom &amp; Virtual Integration</h3>
+          <p>Native Zoom &amp; Microsoft Teams integration with automated attendance capture for learners across all sites.</p>
+        </div>
+        <div class="platform-tab" data-target="panel-certify">
+          <div class="tab-step">03 / ASSESS &amp; CERTIFY</div>
+          <h3>Instant Automated Certification</h3>
+          <p>Native assessments, question banks, and certificates generated automatically 4 seconds after session completion.</p>
+        </div>
+        <div class="platform-tab" data-target="panel-scale">
+          <div class="tab-step">04 / MEASURE &amp; SCALE</div>
+          <h3>Real-Time Trainer Utilization</h3>
+          <p>Live analytics on trainer capacity by city, location performance, and exportable audit-ready HRIS reports.</p>
         </div>
       </div>
-    </div>
 
-    <div class="product-block rev">
-      <div>
-        <div class="pb-index">02 / DELIVER</div>
-        <h3>Classroom, virtual, and blended — run from the same system.</h3>
-        <p class="desc">Zoom and Teams sessions launch directly from SimpliTrain. Attendance tracks itself, whether learners are in the room or joining from a site office.</p>
-        <ul>
-          <li>Native Zoom and Microsoft Teams integration</li>
-          <li>One-click join for trainers and learners</li>
-          <li>Automatic attendance for both ILT and vILT</li>
-          <li>Mobile learner experience for site-based teams</li>
-        </ul>
-      </div>
-      <div class="pb-visual">
-        <div class="mini-metric-row"><span>Session</span><b>vILT — Safety Cert.</b></div>
-        <div class="mini-metric-row"><span>Attendance captured</span><b>118 / 121</b></div>
-        <div class="mini-metric-row"><span>Recording saved</span><b>Automatically</b></div>
-        <div class="mini-metric-row"><span>Feedback sent</span><b>At close</b></div>
-      </div>
-    </div>
-
-    <div class="product-block">
-      <div>
-        <div class="pb-index">03 / ASSESS &amp; CERTIFY</div>
-        <h3>Certificates that generate themselves the moment training is complete.</h3>
-        <p class="desc">Assessments, question banks, and proctoring are built in — so certification isn't a separate tool, a separate login, or a separate delay.</p>
-        <ul>
-          <li>Assessments and question banks native to the platform</li>
-          <li>Proctoring for high-stakes exams</li>
-          <li>Certificates issued automatically on completion</li>
-          <li>Full skill and survey tracking per learner</li>
-        </ul>
-      </div>
-      <div class="pb-visual">
-        <div class="mini-cert">
-          <div class="seal">✓</div>
-          <div class="name">Certificate of Completion</div>
-          <div class="sub">ISSUED AUTOMATICALLY · 00:00:04 AFTER SESSION END</div>
+      <!-- RIGHT INTERACTIVE DISPLAY STAGE -->
+      <div class="platform-stage">
+        <!-- PANEL 1 -->
+        <div class="stage-panel active" id="panel-plan">
+          <div style="font-family:var(--mono); font-size:12px; color:var(--gold); margin-bottom:14px; font-weight:600;">PLAN &amp; SCHEDULE ENGINE</div>
+          <div class="mini-cal" style="margin-bottom:16px;">
+            <div class="d">MON</div><div class="d">TUE</div><div class="d">WED</div><div class="d">THU</div><div class="d">FRI</div>
+            <div class="d on">RUH</div><div class="d">—</div><div class="d busy">JED</div><div class="d">—</div><div class="d on">DMM</div>
+            <div class="d">—</div><div class="d on">RUH</div><div class="d">—</div><div class="d busy">JED</div><div class="d">—</div>
+            <div class="d busy">DMM</div><div class="d">—</div><div class="d on">RUH</div><div class="d">—</div><div class="d">—</div>
+          </div>
+          <div style="font-size:13.5px; color:var(--ink); line-height:1.6;">
+            ✓ Zero double-bookings across Riyadh, Jeddah &amp; Dammam<br>
+            ✓ Automated room &amp; instructor allocation<br>
+            ✓ Live resource conflict alerts &amp; smart scheduling
+          </div>
         </div>
-      </div>
-    </div>
 
-    <div class="product-block rev">
-      <div>
-        <div class="pb-index">04 / MEASURE &amp; SCALE</div>
-        <h3>See trainer utilization and program health without asking anyone for a report.</h3>
-        <p class="desc">Know which trainers are at capacity, which locations are underused, and where the next training center should open — before a spreadsheet tells you three weeks late.</p>
-        <ul>
-          <li>Real-time trainer utilization by city</li>
-          <li>Multi-location, multi-tenant reporting</li>
-          <li>HRIS and CRM integrations</li>
-          <li>Exportable, audit-ready records on demand</li>
-        </ul>
-      </div>
-      <div class="pb-visual">
-        <div class="mini-metric-row"><span>Riyadh utilization</span><b>88%</b></div>
-        <div class="mini-metric-row"><span>Jeddah utilization</span><b>71%</b></div>
-        <div class="mini-metric-row"><span>Dammam utilization</span><b>94%</b></div>
-        <div class="mini-metric-row"><span>Idle trainers this week</span><b>2</b></div>
+        <!-- PANEL 2 -->
+        <div class="stage-panel" id="panel-deliver">
+          <div style="font-family:var(--mono); font-size:12px; color:var(--green-deep); margin-bottom:14px; font-weight:600;">LIVE DELIVERY ROOM</div>
+          <div class="mini-metric-row"><span>Session Type</span><b>vILT — Safety Cert</b></div>
+          <div class="mini-metric-row"><span>Attendance captured</span><b style="color:var(--green);">118 / 121 learners</b></div>
+          <div class="mini-metric-row"><span>Zoom &amp; Teams</span><b>Connected Live</b></div>
+          <div class="mini-metric-row"><span>Recording saved</span><b>Automatic Cloud Archiving</b></div>
+        </div>
+
+        <!-- PANEL 3 -->
+        <div class="stage-panel" id="panel-certify">
+          <div class="mini-cert">
+            <div class="seal">✓</div>
+            <div class="name">Certificate of Completion</div>
+            <div class="sub">ISSUED AUTOMATICALLY · 00:00:04 AFTER SESSION END</div>
+            <div style="margin-top:12px; font-family:var(--arabic); font-size:13px; color:var(--green-deep);">شهادة إتمام معتمدة تلقائياً</div>
+          </div>
+        </div>
+
+        <!-- PANEL 4 -->
+        <div class="stage-panel" id="panel-scale">
+          <div style="font-family:var(--mono); font-size:12px; color:var(--gold); margin-bottom:14px; font-weight:600;">TRAINER UTILIZATION HEATMAP</div>
+          <div class="mini-metric-row"><span>Riyadh Utilization</span><b style="color:var(--green-deep);">88%</b></div>
+          <div class="mini-metric-row"><span>Dammam Utilization</span><b style="color:var(--green-deep);">94%</b></div>
+          <div class="mini-metric-row"><span>Jeddah Utilization</span><b style="color:var(--green-deep);">71%</b></div>
+          <div class="mini-metric-row"><span>Audit Readiness</span><b style="color:var(--green);">100% Exportable</b></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1159,7 +1286,91 @@
     </div>
     <div class="foot-ar" lang="ar">سيمبلي ترين — برمجيات إدارة التدريب</div>
   </div>
-</footer>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Register GSAP Plugins
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
 
+      // Mouse Parallax effect on Hero Mockup Window
+      const heroMockup = document.querySelector('.hero-mockup-wrapper');
+      if (heroMockup) {
+        window.addEventListener('mousemove', (e) => {
+          const x = (e.clientX / window.innerWidth - 0.5) * 12;
+          const y = (e.clientY / window.innerHeight - 0.5) * 12;
+          gsap.to(heroMockup, { rotationY: x, rotationX: -y, ease: "power1.out", duration: 0.8 });
+        });
+      }
+
+      // ScrollTrigger Entrance Animations
+      gsap.from(".stat", {
+        scrollTrigger: { trigger: ".stat-grid", start: "top 85%" },
+        y: 30, opacity: 0, duration: 0.7, stagger: 0.15, ease: "power2.out"
+      });
+
+      gsap.from(".industry-card", {
+        scrollTrigger: { trigger: ".industry-grid", start: "top 85%" },
+        y: 25, opacity: 0, duration: 0.6, stagger: 0.12, ease: "power2.out"
+      });
+
+      gsap.from(".platform-hub", {
+        scrollTrigger: { trigger: "#platform", start: "top 80%" },
+        y: 35, opacity: 0, duration: 0.8, ease: "power2.out"
+      });
+    }
+
+    // Platform Interactive Hub Tab Logic
+    const platformTabs = document.querySelectorAll('.platform-tab');
+    const stagePanels = document.querySelectorAll('.stage-panel');
+
+    platformTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.getAttribute('data-target');
+
+        platformTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        stagePanels.forEach(panel => {
+          if (panel.id === targetId) {
+            panel.classList.add('active');
+            if (typeof gsap !== 'undefined') {
+              gsap.fromTo(panel, { opacity: 0, y: 12, scale: 0.98 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "power2.out" });
+            }
+          } else {
+            panel.classList.remove('active');
+          }
+        });
+      });
+    });
+
+    // Pain Switcher Toggle Logic
+    const btnToday = document.getElementById('btn-today');
+    const btnSimpli = document.getElementById('btn-simplitrain');
+    const viewToday = document.getElementById('view-today');
+    const viewSimpli = document.getElementById('view-simplitrain');
+
+    if (btnToday && btnSimpli && viewToday && viewSimpli) {
+      btnToday.addEventListener('click', () => {
+        btnToday.className = 'pain-toggle-btn active bad';
+        btnSimpli.className = 'pain-toggle-btn good';
+        viewSimpli.classList.remove('active');
+        viewToday.classList.add('active');
+        if (typeof gsap !== 'undefined') {
+          gsap.fromTo(viewToday, { opacity: 0, x: -15 }, { opacity: 1, x: 0, duration: 0.35 });
+        }
+      });
+
+      btnSimpli.addEventListener('click', () => {
+        btnSimpli.className = 'pain-toggle-btn active good';
+        btnToday.className = 'pain-toggle-btn bad';
+        viewToday.classList.remove('active');
+        viewSimpli.classList.add('active');
+        if (typeof gsap !== 'undefined') {
+          gsap.fromTo(viewSimpli, { opacity: 0, x: 15 }, { opacity: 1, x: 0, duration: 0.35 });
+        }
+      });
+    }
+  });
+</script>
 </body>
 </html>
