@@ -876,68 +876,179 @@
     display: none;
     width: 100%;
   }
-  /* ---------- TRAINING OPERATIONS GALLERY ---------- */
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 24px;
+  .stage-panel.active {
+    display: block;
   }
-  .gallery-card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
+
+  /* ---------- GSAP PLATFORM SHOWCASE REEL ---------- */
+  .showcase-section {
+    background: #0A100C;
+    color: #FFFFFF;
+    padding: 90px 0;
     overflow: hidden;
-    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 10px 25px -10px rgba(0,0,0,0.05);
+    position: relative;
   }
-  .gallery-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px -15px rgba(14,107,79,0.18);
-    border-color: var(--green);
+  .showcase-head {
+    max-width: 720px;
+    margin-bottom: 44px;
   }
-  .gallery-img-wrapper {
+  .showcase-head .eyebrow {
+    color: var(--gold);
+  }
+  .showcase-head h2 {
+    color: #FFFFFF;
+    font-size: clamp(32px, 4.2vw, 48px);
+    margin-top: 14px;
+    margin-bottom: 14px;
+  }
+  .showcase-head p {
+    color: rgba(255,255,255,0.75);
+    font-size: 16.5px;
+  }
+
+  .showcase-carousel-wrapper {
     position: relative;
     width: 100%;
-    height: 220px;
-    overflow: hidden;
+    margin: 0 auto;
+    padding: 10px 0 20px 0;
   }
-  .gallery-img {
+
+  .showcase-track-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 480px;
+  }
+
+  .showcase-slide {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-  }
-  .gallery-card:hover .gallery-img {
-    transform: scale(1.06);
-  }
-  .gallery-badge {
+    max-width: 820px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(20, 30, 25, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.8), 0 0 40px rgba(185,137,62,0.12);
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
     position: absolute;
-    top: 14px;
-    left: 14px;
-    background: rgba(14, 21, 18, 0.85);
+    opacity: 0;
+    transform: scale(0.75);
+    pointer-events: none;
+  }
+
+  .showcase-slide.active {
+    position: relative;
+    opacity: 1;
+    transform: scale(1) translateX(0);
+    z-index: 10;
+    pointer-events: auto;
+  }
+
+  .showcase-slide.prev {
+    position: absolute;
+    left: 0%;
+    opacity: 0.45;
+    transform: scale(0.82) rotate(-3deg) translateX(-10%);
+    z-index: 5;
+    pointer-events: auto;
+    filter: blur(1px);
+  }
+
+  .showcase-slide.next {
+    position: absolute;
+    right: 0%;
+    opacity: 0.45;
+    transform: scale(0.82) rotate(3deg) translateX(10%);
+    z-index: 5;
+    pointer-events: auto;
+    filter: blur(1px);
+  }
+
+  .showcase-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 18px;
+  }
+
+  /* Bottom Controls & Description */
+  .showcase-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 36px;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .showcase-title-box h3 {
+    font-size: 22px;
     color: #FFFFFF;
+    font-family: var(--serif);
+    margin-bottom: 6px;
+  }
+  .showcase-title-box .tech-tag {
     font-family: var(--mono);
-    font-size: 11px;
-    padding: 4px 12px;
-    border-radius: 100px;
+    font-size: 12.5px;
+    color: var(--gold);
+  }
+  .showcase-title-box .ar-tag {
+    font-family: var(--arabic);
+    color: #CDEBDD;
+    font-size: 14px;
+    margin-left: 10px;
+  }
+
+  .showcase-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .showcase-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.06);
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.25s ease;
     backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
   }
-  .gallery-content {
-    padding: 22px 20px;
+  .showcase-btn:hover {
+    background: var(--gold);
+    color: #0A100C;
+    border-color: var(--gold);
+    transform: scale(1.08);
   }
-  .gallery-content h3 {
-    font-size: 18px;
-    margin-bottom: 8px;
+
+  .showcase-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
   }
-  .gallery-content p {
-    font-size: 13.5px;
-    color: var(--ink-soft);
-    line-height: 1.55;
+  .showcase-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
   }
-  @media (max-width: 900px) {
-    .gallery-grid { grid-template-columns: 1fr; }
+  .showcase-dot.active {
+    width: 24px;
+    border-radius: 100px;
+    background: var(--gold);
+  }
+
+  @media (max-width: 800px) {
+    .showcase-slide { flex: 0 0 92%; }
+    .showcase-slide.prev, .showcase-slide.next { opacity: 0; display: none; }
+    .showcase-track-container { min-height: 260px; }
   }
 </style>
 </head>
@@ -1202,49 +1313,63 @@
   </div>
 </section>
 
-<!-- TRAINING OPERATIONS IN KSA (VISUAL SHOWCASE GALLERY) -->
-<section class="section alt" id="gallery">
+<!-- GSAP PLATFORM SHOWCASE REEL -->
+<section class="showcase-section" id="showcase">
   <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Training Operations in Saudi Arabia</span>
-      <h2>Built for the Kingdom's most demanding training environments.</h2>
-      <p>Whether you're running executive leadership academies in Riyadh or multi-site contractor certifications in Dammam — SimpliTrain provides complete operational control.</p>
+    <div class="showcase-head">
+      <span class="eyebrow">Interactive Platform Showcase</span>
+      <h2>Inside the SimpliTrain Platform</h2>
+      <p>Explore high-resolution interface views of SimpliTrain running multi-city training operations, Arabic RTL dashboards, live vILT classrooms, and instructor allocation across KSA.</p>
     </div>
 
-    <div class="gallery-grid">
-      <!-- CARD 1 -->
-      <div class="gallery-card">
-        <div class="gallery-img-wrapper">
-          <img src="assets/saudi_classroom_training.jpg" alt="Corporate ILT Classroom Training in Riyadh" class="gallery-img">
-          <span class="gallery-badge">Riyadh · Executive ILT</span>
+    <div class="showcase-carousel-wrapper">
+      <div class="showcase-track-container">
+        <!-- SLIDE 1: ARABIC DASHBOARD -->
+        <div class="showcase-slide active" data-index="0" data-title="Bilingual Arabic Admin Dashboard" data-tech="{لوحة التحكم، المقررات، جدول التدريب والشهادات}" data-ar="واجهة عربية كاملة لإدارة التدريب">
+          <img src="assets/showcase_arabic_dashboard.png" alt="SimpliTrain Arabic LMS TMS Dashboard" class="showcase-img">
         </div>
-        <div class="gallery-content">
-          <h3>Executive &amp; Corporate ILT Academies</h3>
-          <p>Coordinate classroom capacity, instructor allocation, and learner attendance for multi-branch institutes across Saudi Arabia.</p>
+
+        <!-- SLIDE 2: MULTI-CITY CALENDAR -->
+        <div class="showcase-slide next" data-index="1" data-title="Multi-City Training Calendar" data-tech="{Riyadh, Jeddah &amp; Dammam Schedule Engine}" data-ar="جدولة الفصول والمراكز التدريبية">
+          <img src="assets/showcase_calendar.png" alt="SimpliTrain Multi-City Calendar" class="showcase-img">
+        </div>
+
+        <!-- SLIDE 3: LIVE CLASSROOM (vILT) -->
+        <div class="showcase-slide" data-index="2" data-title="Live Virtual Classroom (vILT Session)" data-tech="{Zoom &amp; Microsoft Teams Live Integration}" data-ar="الفصول الافتراضية والحضور المباشر">
+          <img src="assets/showcase_live_class.png" alt="SimpliTrain Live Class vILT Session" class="showcase-img">
+        </div>
+
+        <!-- SLIDE 4: INSTRUCTOR ALLOCATION -->
+        <div class="showcase-slide" data-index="3" data-title="Instructor Allocation &amp; Capacity" data-tech="{Real-Time Conflict Alerts &amp; Utilization}" data-ar="إدارة المدربين وتجنب التعارضات">
+          <img src="assets/showcase_instructor_allocation.png" alt="SimpliTrain Instructor Allocation Dashboard" class="showcase-img">
+        </div>
+
+        <!-- SLIDE 5: FULL TMS DASHBOARD -->
+        <div class="showcase-slide prev" data-index="4" data-title="Full TMS Operations Overview" data-tech="{TVTC &amp; HRIS Audit-Ready Reporting}" data-ar="تقارير العمليات وساعات التدريب">
+          <img src="assets/showcase_tms_dashboard.png" alt="SimpliTrain TMS Platform Overview" class="showcase-img">
         </div>
       </div>
 
-      <!-- CARD 2 -->
-      <div class="gallery-card">
-        <div class="gallery-img-wrapper">
-          <img src="assets/saudi_safety_training.jpg" alt="Technical & HSE Safety Certification in Dammam" class="gallery-img">
-          <span class="gallery-badge">Dammam · HSE &amp; Compliance</span>
+      <!-- BOTTOM META & CONTROLS -->
+      <div class="showcase-meta-row">
+        <div class="showcase-title-box">
+          <h3 id="showcase-active-title">Bilingual Arabic Admin Dashboard</h3>
+          <div>
+            <span class="tech-tag" id="showcase-active-tech">{لوحة التحكم، المقررات، جدول التدريب والشهادات}</span>
+            <span class="ar-tag" id="showcase-active-ar">واجهة عربية كاملة لإدارة التدريب</span>
+          </div>
         </div>
-        <div class="gallery-content">
-          <h3>Industrial &amp; Contractor Certification</h3>
-          <p>Automate recurring safety compliance, permit-to-work certifications, and TVTC-licensed training records with instant verification.</p>
-        </div>
-      </div>
 
-      <!-- CARD 3 -->
-      <div class="gallery-card">
-        <div class="gallery-img-wrapper">
-          <img src="assets/riyadh_skyline.jpg" alt="Kingdom-wide Multi-City Training Operations" class="gallery-img">
-          <span class="gallery-badge">Kingdom-Wide · Multi-City Hub</span>
-        </div>
-        <div class="gallery-content">
-          <h3>Multi-City Operations &amp; Giga-Projects</h3>
-          <p>One unified management system connecting coordinators, trainers, and site managers across all Saudi provinces.</p>
+        <div class="showcase-controls">
+          <div class="showcase-dots">
+            <span class="showcase-dot active" data-goto="0"></span>
+            <span class="showcase-dot" data-goto="1"></span>
+            <span class="showcase-dot" data-goto="2"></span>
+            <span class="showcase-dot" data-goto="3"></span>
+            <span class="showcase-dot" data-goto="4"></span>
+          </div>
+          <button class="showcase-btn" id="showcase-prev-btn" aria-label="Previous Slide">←</button>
+          <button class="showcase-btn" id="showcase-next-btn" aria-label="Next Slide">→</button>
         </div>
       </div>
     </div>
@@ -1422,11 +1547,6 @@
         scrollTrigger: { trigger: "#platform", start: "top 80%" },
         y: 35, opacity: 0, duration: 0.8, ease: "power2.out"
       });
-
-      gsap.from(".gallery-card", {
-        scrollTrigger: { trigger: ".gallery-grid", start: "top 85%" },
-        y: 30, opacity: 0, duration: 0.7, stagger: 0.16, ease: "power2.out"
-      });
     }
 
     // Platform Interactive Hub Tab Logic
@@ -1480,6 +1600,75 @@
         }
       });
     }
+
+    // GSAP Showcase Carousel Interactive Reel
+    const showcaseSlides = document.querySelectorAll('.showcase-slide');
+    const showcaseDots = document.querySelectorAll('.showcase-dot');
+    const showcasePrevBtn = document.getElementById('showcase-prev-btn');
+    const showcaseNextBtn = document.getElementById('showcase-next-btn');
+    const activeTitle = document.getElementById('showcase-active-title');
+    const activeTech = document.getElementById('showcase-active-tech');
+    const activeAr = document.getElementById('showcase-active-ar');
+
+    let currentShowcaseIndex = 0;
+    const totalShowcaseSlides = showcaseSlides.length;
+
+    function updateShowcaseCarousel(index) {
+      if (totalShowcaseSlides === 0) return;
+      currentShowcaseIndex = (index + totalShowcaseSlides) % totalShowcaseSlides;
+
+      showcaseSlides.forEach((slide, i) => {
+        slide.classList.remove('active', 'prev', 'next');
+        const diff = (i - currentShowcaseIndex + totalShowcaseSlides) % totalShowcaseSlides;
+
+        if (diff === 0) {
+          slide.classList.add('active');
+          if (typeof gsap !== 'undefined') {
+            gsap.to(slide, { scale: 1, x: "0%", opacity: 1, rotateY: 0, duration: 0.5, ease: "power2.out" });
+          }
+        } else if (diff === 1 || (diff === totalShowcaseSlides - 1 && totalShowcaseSlides === 2)) {
+          slide.classList.add('next');
+          if (typeof gsap !== 'undefined') {
+            gsap.to(slide, { scale: 0.82, opacity: 0.45, rotateY: -6, duration: 0.5, ease: "power2.out" });
+          }
+        } else if (diff === totalShowcaseSlides - 1) {
+          slide.classList.add('prev');
+          if (typeof gsap !== 'undefined') {
+            gsap.to(slide, { scale: 0.82, opacity: 0.45, rotateY: 6, duration: 0.5, ease: "power2.out" });
+          }
+        } else {
+          if (typeof gsap !== 'undefined') {
+            gsap.to(slide, { opacity: 0, scale: 0.7, duration: 0.3 });
+          }
+        }
+      });
+
+      const activeSlide = showcaseSlides[currentShowcaseIndex];
+      if (activeSlide) {
+        if (activeTitle) activeTitle.textContent = activeSlide.getAttribute('data-title');
+        if (activeTech) activeTech.textContent = activeSlide.getAttribute('data-tech');
+        if (activeAr) activeAr.textContent = activeSlide.getAttribute('data-ar');
+      }
+
+      showcaseDots.forEach((dot, i) => {
+        if (i === currentShowcaseIndex) dot.classList.add('active');
+        else dot.classList.remove('active');
+      });
+    }
+
+    if (showcasePrevBtn) showcasePrevBtn.addEventListener('click', () => updateShowcaseCarousel(currentShowcaseIndex - 1));
+    if (showcaseNextBtn) showcaseNextBtn.addEventListener('click', () => updateShowcaseCarousel(currentShowcaseIndex + 1));
+
+    showcaseDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const goto = parseInt(dot.getAttribute('data-goto'));
+        updateShowcaseCarousel(goto);
+      });
+    });
+
+    showcaseSlides.forEach((slide, i) => {
+      slide.addEventListener('click', () => updateShowcaseCarousel(i));
+    });
   });
 </script>
 </body>
