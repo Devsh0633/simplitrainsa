@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SimpliTrain in Saudi Arabia | Training Management Software for ILT &amp; vILT</title>
+<meta name="description" content="SimpliTrain runs instructor-led and virtual instructor-led training across Riyadh, Jeddah, Dammam, and beyond — scheduling, delivery, and certification in one platform, in Arabic and English.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F5F0;
+    --bg-alt:#EFEAE0;
+    --ink:#15211B;
+    --ink-soft:#4E5A52;
+    --ink-faint:#8A9188;
+    --green:#0E6B4F;
+    --green-deep:#0A4D39;
+    --gold:#B9893E;
+    --line:#DCD5C6;
+    --card:#FFFFFF;
+    --red-dot:#C24B3A;
+    --amber-dot:#C79A3D;
+    --radius:14px;
+    --max:1180px;
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono:'IBM Plex Mono', ui-monospace, monospace;
+    --arabic:'IBM Plex Sans Arabic', 'Tahoma', sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;letter-spacing:-0.01em;}
+  p{margin:0;}
+  ul{margin:0;padding:0;list-style:none;}
+  [lang="ar"]{font-family:var(--arabic);direction:rtl;unicode-bidi:isolate;}
+
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+  section{position:relative;}
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--green);
+    outline-offset:3px;
+  }
+
+  /* ---------- Eyebrow / labels ---------- */
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--green-deep);
+  }
+  .eyebrow::before{
+    content:"";
+    width:7px;height:7px;border-radius:50%;
+    background:var(--green);
+    display:inline-block;
+  }
+  .eyebrow .ar{
+    font-family:var(--arabic);
+    text-transform:none;
+    letter-spacing:0;
+    color:var(--ink-faint);
+    font-size:13px;
+  }
+
+  /* ---------- Schedule-strip signature divider ---------- */
+  .strip{
+    height:34px;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:
+      repeating-linear-gradient(90deg,
+        var(--line) 0 1px,
+        transparent 1px 120px);
+    background-color:var(--bg-alt);
+  }
+  .strip span{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink-faint);
+    white-space:nowrap;
+    padding-left:6px;
+  }
+
+  /* ---------- Nav ---------- */
+  header.site{
+    padding:20px 0;
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    background:rgba(247,245,240,0.92);
+    backdrop-filter:blur(6px);
+    z-index:50;
+  }
+  .nav-row{display:flex;align-items:center;justify-content:space-between;gap:20px;}
+  .logo{
+    font-family:var(--mono);
+    font-weight:500;
+    font-size:15px;
+    letter-spacing:0.02em;
+  }
+  .logo b{font-weight:700;}
+  .nav-links{display:flex;gap:28px;font-size:14px;color:var(--ink-soft);}
+  .nav-links a{text-decoration:none;transition:color .15s;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-cta{
+    font-size:13px;
+    font-weight:600;
+    padding:9px 18px;
+    background:var(--green-deep);
+    color:#fff;
+    border-radius:100px;
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  @media (max-width:780px){ .nav-links{display:none;} }
+
+  /* ---------- Hero ---------- */
+  .hero{padding:64px 0 40px;}
+  .hero-top{max-width:760px;}
+  .hero-eyebrow-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:22px;}
+  h1.hero-h{
+    font-size:clamp(34px,5.2vw,58px);
+    line-height:1.06;
+    margin-bottom:20px;
+  }
+  h1.hero-h em{font-style:italic;color:var(--green-deep);}
+  .hero-sub{
+    font-size:18px;
+    color:var(--ink-soft);
+    max-width:600px;
+    margin-bottom:30px;
+  }
+  .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:16px;}
+  .btn-primary{
+    background:var(--green-deep);
+    color:#fff;
+    border:none;
+    padding:14px 26px;
+    border-radius:100px;
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:15px;
+    cursor:pointer;
+    text-decoration:none;
+    display:inline-block;
+  }
+  .btn-secondary{
+    padding:14px 24px;
+    border-radius:100px;
+    border:1px solid var(--ink);
+    color:var(--ink);
+    font-weight:600;
+    font-size:15px;
+    text-decoration:none;
+    display:inline-block;
+  }
+  .cta-note{font-size:13px;color:var(--ink-faint);}
+  .cta-note .ar{font-family:var(--arabic);}
+
+  /* ---------- Ops board (hero signature) ---------- */
+  .board{
+    margin-top:52px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:0 30px 60px -30px rgba(20,30,25,0.25);
+  }
+  .board-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 22px;
+    border-bottom:1px solid var(--line);
+    background:var(--bg-alt);
+  }
+  .board-head .t{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
+  .board-head .live{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;color:var(--green-deep);}
+  .board-head .live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+  @media (prefers-reduced-motion:reduce){.board-head .live::before{animation:none;}}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+
+  .board-row{
+    display:grid;
+    grid-template-columns:1.1fr 1.6fr 0.9fr 0.9fr 1fr;
+    gap:12px;
+    padding:15px 22px;
+    border-bottom:1px solid var(--line);
+    align-items:center;
+    font-size:13.5px;
+  }
+  .board-row:last-child{border-bottom:none;}
+  .board-row .city{font-weight:700;}
+  .board-row .city .sub{display:block;font-size:11px;color:var(--ink-faint);font-weight:400;}
+  .board-row .fmt{
+    font-family:var(--mono);
+    font-size:11px;
+    padding:3px 9px;
+    border-radius:100px;
+    border:1px solid var(--line);
+    width:fit-content;
+    color:var(--ink-soft);
+  }
+  .board-row .status{display:flex;align-items:center;gap:7px;color:var(--ink-soft);}
+  .dot{width:7px;height:7px;border-radius:50%;flex:none;}
+  .dot.green{background:var(--green);}
+  .dot.amber{background:var(--amber-dot);}
+  .dot.blue{background:#3E6FB9;}
+  @media (max-width:760px){
+    .board-row{grid-template-columns:1fr 1fr;row-gap:6px;}
+    .board-row .fmt{grid-column:1/2;}
+    .board-row .status{grid-column:2/3;justify-self:end;}
+  }
+
+  /* ---------- Generic section paddings ---------- */
+  .section{padding:76px 0;}
+  .section.alt{background:var(--bg-alt);}
+  .section-head{max-width:680px;margin-bottom:44px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,38px);margin-top:16px;}
+  .section-head p{color:var(--ink-soft);font-size:16px;margin-top:14px;max-width:560px;}
+
+  /* ---------- Market stats ---------- */
+  .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+  .stat{background:var(--card);padding:28px 26px;}
+  .stat .num{font-family:var(--serif);font-size:38px;color:var(--green-deep);}
+  .stat .label{font-size:13.5px;color:var(--ink-soft);margin-top:8px;}
+  @media (max-width:760px){.stat-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Pain list ---------- */
+  .pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .pain-item{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px 24px;
+    font-size:15px;
+    color:var(--ink-soft);
+    display:flex;
+    gap:14px;
+  }
+  .pain-item .mark{font-family:var(--mono);color:var(--gold);flex:none;}
+  @media (max-width:760px){.pain-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Before / after ---------- */
+  .flip{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:8px;}
+  .flip>div{padding:30px 30px;}
+  .flip .before{background:var(--card);}
+  .flip .after{background:var(--green-deep);color:#fff;}
+  .flip h3{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px;opacity:.75;}
+  .flip .after h3{color:#CDEBDD;}
+  .flip .before h3{color:var(--ink-faint);}
+  .flip ol{list-style:none;margin:0;padding:0;}
+  .flip li{display:flex;gap:12px;padding:9px 0;font-size:14.5px;border-bottom:1px solid rgba(0,0,0,.06);}
+  .flip .after li{border-bottom:1px solid rgba(255,255,255,.14);}
+  .flip li:last-child{border-bottom:none;}
+  .flip .step{font-family:var(--mono);font-size:12px;opacity:.6;flex:none;width:20px;}
+  @media (max-width:760px){.flip{grid-template-columns:1fr;}}
+
+  /* ---------- Product blocks ---------- */
+  .product-block{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:48px;
+    align-items:center;
+    padding:52px 0;
+    border-top:1px solid var(--line);
+  }
+  .product-block:first-of-type{border-top:none;}
+  .product-block.rev{grid-template-columns:1.1fr 0.9fr;}
+  .product-block.rev .pb-visual{order:2;}
+  .pb-index{font-family:var(--mono);font-size:12px;color:var(--gold);margin-bottom:10px;letter-spacing:.08em;}
+  .product-block h3{font-size:24px;margin-bottom:12px;}
+  .product-block p.desc{color:var(--ink-soft);font-size:15.5px;margin-bottom:18px;}
+  .product-block ul{display:flex;flex-direction:column;gap:9px;}
+  .product-block li{font-size:14.5px;color:var(--ink);display:flex;gap:10px;}
+  .product-block li::before{content:"—";color:var(--green);flex:none;}
+  .pb-visual{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:20px;
+    min-height:200px;
+  }
+  @media (max-width:820px){
+    .product-block, .product-block.rev{grid-template-columns:1fr;}
+    .product-block.rev .pb-visual{order:0;}
+  }
+
+  /* mini visuals */
+  .mini-cal{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;}
+  .mini-cal .d{background:var(--bg-alt);border-radius:6px;padding:8px 6px;font-size:10px;color:var(--ink-faint);text-align:center;font-family:var(--mono);}
+  .mini-cal .d.on{background:var(--green);color:#fff;}
+  .mini-cal .d.busy{background:var(--gold);color:#fff;}
+  .mini-cert{border:1px dashed var(--line);border-radius:10px;padding:20px;text-align:center;}
+  .mini-cert .seal{width:44px;height:44px;border-radius:50%;background:var(--green-deep);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--serif);font-size:18px;}
+  .mini-cert .name{font-family:var(--serif);font-size:16px;}
+  .mini-cert .sub{font-size:11px;color:var(--ink-faint);margin-top:4px;font-family:var(--mono);}
+  .mini-metric-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:12.5px;}
+  .mini-metric-row:last-child{border-bottom:none;}
+  .mini-metric-row b{font-family:var(--mono);color:var(--green-deep);}
+
+  /* ---------- Pricing moat ---------- */
+  .pricing-compare{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px;}
+  .price-card{border-radius:var(--radius);padding:28px 26px;border:1px solid var(--line);}
+  .price-card.bad{background:var(--card);}
+  .price-card.good{background:var(--green-deep);color:#fff;}
+  .price-card .k{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;opacity:.7;margin-bottom:16px;display:block;}
+  .price-card .line{display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+  .price-card.good .line{border-bottom:1px solid rgba(255,255,255,.16);}
+  .price-card .line:last-child{border-bottom:none;}
+  .price-card .line b{font-family:var(--mono);}
+  @media (max-width:760px){.pricing-compare{grid-template-columns:1fr;}}
+
+  /* ---------- Language section ---------- */
+  .lang-section{
+    background:var(--green-deep);
+    color:#fff;
+    border-radius:24px;
+    padding:56px 48px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+  }
+  .lang-section .ar-eyebrow{font-family:var(--arabic);font-size:15px;color:#CDEBDD;margin-bottom:14px;display:block;}
+  .lang-section h2{color:#fff;font-size:clamp(24px,3vw,32px);margin-bottom:16px;}
+  .lang-section p{color:#DCEFE6;font-size:15.5px;line-height:1.7;}
+  .lang-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+  .lang-badge{
+    border:1px solid rgba(255,255,255,.3);
+    border-radius:100px;
+    padding:8px 16px;
+    font-size:13px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .lang-badge .ar{font-family:var(--arabic);}
+  .lang-visual{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:16px;
+    padding:24px;
+  }
+  .lang-toggle-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.14);font-size:14px;}
+  .lang-toggle-row:last-child{border-bottom:none;}
+  .lang-toggle-row .tag{font-family:var(--mono);font-size:11px;background:rgba(255,255,255,.12);padding:3px 9px;border-radius:100px;}
+  @media (max-width:820px){.lang-section{grid-template-columns:1fr;padding:40px 26px;}}
+
+  /* ---------- Industries ---------- */
+  .industry-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .industry-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:26px 22px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .industry-card .tag{font-family:var(--mono);font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;}
+  .industry-card h3{font-size:18px;}
+  .industry-card p{font-size:13.5px;color:var(--ink-soft);line-height:1.55;}
+  @media (max-width:980px){.industry-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.industry-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Proof stats ---------- */
+  .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .proof-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;}
+  .proof-card .big{font-family:var(--serif);font-size:44px;color:var(--green-deep);}
+  .proof-card .cap{font-size:13.5px;color:var(--ink-soft);margin-top:10px;}
+  .proof-card .src{font-family:var(--mono);font-size:11px;color:var(--ink-faint);margin-top:14px;}
+  .proof-note{font-size:13px;color:var(--ink-faint);margin-top:18px;}
+  @media (max-width:760px){.proof-grid{grid-template-columns:1fr;}}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{border-top:1px solid var(--line);}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    padding:22px 4px;
+    font-family:var(--sans);
+    font-size:16px;
+    font-weight:600;
+    color:var(--ink);
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+  }
+  .faq-q .plus{font-family:var(--mono);color:var(--green);flex:none;transition:transform .2s;}
+  .faq-item[open] .plus{transform:rotate(45deg);}
+  .faq-a{padding:0 4px 22px;color:var(--ink-soft);font-size:14.5px;max-width:680px;line-height:1.7;}
+
+  /* ---------- Final CTA ---------- */
+  .final-cta{
+    text-align:center;
+    padding:80px 0;
+  }
+  .final-cta h2{font-size:clamp(28px,4vw,42px);max-width:640px;margin:0 auto 14px;}
+  .final-cta .ar{font-family:var(--arabic);color:var(--ink-soft);font-size:16px;display:block;margin-bottom:26px;}
+  .final-cta .sub{color:var(--ink-soft);margin-bottom:34px;}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--line);padding:44px 0 30px;}
+  .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;align-items:center;}
+  .foot-row .fl{font-size:13px;color:var(--ink-faint);}
+  .foot-links{display:flex;gap:20px;font-size:13px;color:var(--ink-soft);}
+  .foot-links a{text-decoration:none;}
+  .foot-ar{font-family:var(--arabic);font-size:13px;color:var(--ink-faint);}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav-row">
+    <div class="logo"><b>SimpliTrain</b> · KSA</div>
+    <nav class="nav-links">
+      <a href="#reality">The Market</a>
+      <a href="#platform">Platform</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#industries">Industries</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="nav-cta" href="#cta">Book a Demo</a>
+  </div>
+</header>
+
+<div class="strip" aria-hidden="true">
+  <span>RIYADH — 09:00 ILT&nbsp;&nbsp;&nbsp;&nbsp;JEDDAH — 11:30 vILT&nbsp;&nbsp;&nbsp;&nbsp;DAMMAM — 14:00 BLENDED&nbsp;&nbsp;&nbsp;&nbsp;RIYADH — 09:00 ILT&nbsp;&nbsp;&nbsp;&nbsp;JEDDAH — 11:30 vILT&nbsp;&nbsp;&nbsp;&nbsp;DAMMAM — 14:00 BLENDED</span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-top">
+    <div class="hero-eyebrow-row">
+      <span class="eyebrow">SimpliTrain in Saudi Arabia</span>
+      <span class="eyebrow ar" lang="ar">الآن في السعودية</span>
+    </div>
+    <h1 class="hero-h">More training. <em>More cities.</em> Same team, full control.</h1>
+    <p class="hero-sub">SimpliTrain runs instructor-led and virtual instructor-led training for organizations scaling across Riyadh, Jeddah, Dammam, and beyond — scheduling, delivery, and certification, in one platform, in Arabic and English.</p>
+    <div class="cta-row">
+      <a class="btn-primary" href="#cta">Book a Demo</a>
+      <a class="btn-secondary" href="#platform">See How It Works</a>
+    </div>
+    <p class="cta-note" style="margin-top:16px;">30-minute session, on your own training programs. <span class="ar" lang="ar">نعرض لكم المنصة على بياناتكم الفعلية.</span></p>
+  </div>
+
+  <div class="wrap">
+    <div class="board">
+      <div class="board-head">
+        <span class="t">Today's Operations — All Locations</span>
+        <span class="live">Live</span>
+      </div>
+      <div class="board-row">
+        <div class="city">Riyadh <span class="sub">Leadership Development</span></div>
+        <div></div>
+        <div class="fmt">ILT</div>
+        <div style="font-size:12.5px;color:var(--ink-faint);">42 learners</div>
+        <div class="status"><span class="dot green"></span>On track</div>
+      </div>
+      <div class="board-row">
+        <div class="city">Jeddah <span class="sub">Safety Certification</span></div>
+        <div></div>
+        <div class="fmt">vILT</div>
+        <div style="font-size:12.5px;color:var(--ink-faint);">118 learners</div>
+        <div class="status"><span class="dot blue"></span>Live now</div>
+      </div>
+      <div class="board-row">
+        <div class="city">Dammam <span class="sub">Technical Onboarding</span></div>
+        <div></div>
+        <div class="fmt">Blended</div>
+        <div style="font-size:12.5px;color:var(--ink-faint);">76 learners</div>
+        <div class="status"><span class="dot amber"></span>Starts 14:00</div>
+      </div>
+      <div class="board-row">
+        <div class="city">Eastern Province <span class="sub">HSE Recertification</span></div>
+        <div></div>
+        <div class="fmt">ILT</div>
+        <div style="font-size:12.5px;color:var(--ink-faint);">205 learners</div>
+        <div class="status"><span class="dot green"></span>On track</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip" aria-hidden="true">
+  <span>82% TRAINER UTILIZATION&nbsp;&nbsp;&nbsp;&nbsp;4 SYSTEMS → 1&nbsp;&nbsp;&nbsp;&nbsp;UNLIMITED LEARNERS&nbsp;&nbsp;&nbsp;&nbsp;82% TRAINER UTILIZATION&nbsp;&nbsp;&nbsp;&nbsp;4 SYSTEMS → 1&nbsp;&nbsp;&nbsp;&nbsp;UNLIMITED LEARNERS</span>
+</div>
+
+<!-- THE MARKET -->
+<section class="section" id="reality">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The Saudi Training Market</span>
+      <h2>Training demand in the Kingdom is outrunning the tools built to manage it.</h2>
+      <p>Vision 2030's push into new industries, giga-projects, and a fast-growing corporate sector means more organizations are training more people, more often — and most are still coordinating it the way they did five years ago.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="num">23.5%</div>
+        <div class="label">Annual growth forecast for Saudi Arabia's corporate e-learning market through 2030 — one of the fastest-growing corporate training markets in the region.</div>
+      </div>
+      <div class="stat">
+        <div class="num">1,200+</div>
+        <div class="label">TVTC-licensed training institutes and centers operating across the Kingdom, many running multiple branches at once.</div>
+      </div>
+      <div class="stat">
+        <div class="num">663K</div>
+        <div class="label">Projected skilled-worker shortfall by 2030 — a gap that gets closed one training session at a time, at scale.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE REAL PAIN -->
+<section class="section alt" id="reality2">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The Part No One Puts On A Slide</span>
+      <h2>Growth is good. Running it on a spreadsheet is not.</h2>
+      <p>None of this is unique to Saudi Arabia — it's just happening faster here right now. If any of this sounds like a Tuesday, you're not alone.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-item"><span class="mark">01</span><span>A trainer double-booked across Riyadh and Jeddah on the same morning, discovered the night before.</span></div>
+      <div class="pain-item"><span class="mark">02</span><span>Instructor availability tracked in a shared sheet that's always one edit behind what's actually true.</span></div>
+      <div class="pain-item"><span class="mark">03</span><span>Certificates issued by hand, days after a session ends, because no one owns that step.</span></div>
+      <div class="pain-item"><span class="mark">04</span><span>A WhatsApp group standing in for a real booking and attendance system.</span></div>
+      <div class="pain-item"><span class="mark">05</span><span>No single view of which trainer is overbooked in Dammam and which one is idle in Riyadh.</span></div>
+      <div class="pain-item"><span class="mark">06</span><span>Adding a new training center means adding a new spreadsheet, not extending the one system you already trust.</span></div>
+    </div>
+
+    <div class="flip">
+      <div class="before">
+        <h3>Coordinating It Today</h3>
+        <ol>
+          <li><span class="step">01</span>Trainer schedules live in three different spreadsheets across three cities.</li>
+          <li><span class="step">02</span>Attendance is marked on paper, then re-typed later — if it's typed at all.</li>
+          <li><span class="step">03</span>Certificates are built one by one in a document editor.</li>
+          <li><span class="step">04</span>No one can say, today, exactly how many sessions are running or who's running them.</li>
+        </ol>
+      </div>
+      <div class="after">
+        <h3>Running On SimpliTrain</h3>
+        <ol>
+          <li><span class="step">01</span>Every trainer, room, and city on one live calendar.</li>
+          <li><span class="step">02</span>Attendance captured automatically, in the room or on the call.</li>
+          <li><span class="step">03</span>Certificates generated the moment a session is marked complete.</li>
+          <li><span class="step">04</span>One dashboard shows every session, every city, right now.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM -->
+<section class="section" id="platform">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The Platform</span>
+      <h2>Everything it takes to run ILT and vILT at scale, in one place.</h2>
+      <p>Plan it, deliver it, prove it happened, then use the data to run the program better next quarter.</p>
+    </div>
+
+    <div class="product-block">
+      <div>
+        <div class="pb-index">01 / PLAN &amp; SCHEDULE</div>
+        <h3>Coordinate every session, trainer, and room from one calendar.</h3>
+        <p class="desc">Whether you're running training out of one center in Riyadh or twelve across the Kingdom, scheduling stops being a full-time job for one very tired coordinator.</p>
+        <ul>
+          <li>Session and cohort scheduling across every location</li>
+          <li>Trainer allocation based on real availability, not memory</li>
+          <li>Room and resource booking built in</li>
+          <li>One calendar for classroom, virtual, and blended sessions</li>
+        </ul>
+      </div>
+      <div class="pb-visual">
+        <div class="mini-cal">
+          <div class="d">MON</div><div class="d">TUE</div><div class="d">WED</div><div class="d">THU</div><div class="d">FRI</div>
+          <div class="d on">RUH</div><div class="d">—</div><div class="d busy">JED</div><div class="d">—</div><div class="d on">DMM</div>
+          <div class="d">—</div><div class="d on">RUH</div><div class="d">—</div><div class="d busy">JED</div><div class="d">—</div>
+          <div class="d busy">DMM</div><div class="d">—</div><div class="d on">RUH</div><div class="d">—</div><div class="d">—</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-block rev">
+      <div>
+        <div class="pb-index">02 / DELIVER</div>
+        <h3>Classroom, virtual, and blended — run from the same system.</h3>
+        <p class="desc">Zoom and Teams sessions launch directly from SimpliTrain. Attendance tracks itself, whether learners are in the room or joining from a site office.</p>
+        <ul>
+          <li>Native Zoom and Microsoft Teams integration</li>
+          <li>One-click join for trainers and learners</li>
+          <li>Automatic attendance for both ILT and vILT</li>
+          <li>Mobile learner experience for site-based teams</li>
+        </ul>
+      </div>
+      <div class="pb-visual">
+        <div class="mini-metric-row"><span>Session</span><b>vILT — Safety Cert.</b></div>
+        <div class="mini-metric-row"><span>Attendance captured</span><b>118 / 121</b></div>
+        <div class="mini-metric-row"><span>Recording saved</span><b>Automatically</b></div>
+        <div class="mini-metric-row"><span>Feedback sent</span><b>At close</b></div>
+      </div>
+    </div>
+
+    <div class="product-block">
+      <div>
+        <div class="pb-index">03 / ASSESS &amp; CERTIFY</div>
+        <h3>Certificates that generate themselves the moment training is complete.</h3>
+        <p class="desc">Assessments, question banks, and proctoring are built in — so certification isn't a separate tool, a separate login, or a separate delay.</p>
+        <ul>
+          <li>Assessments and question banks native to the platform</li>
+          <li>Proctoring for high-stakes exams</li>
+          <li>Certificates issued automatically on completion</li>
+          <li>Full skill and survey tracking per learner</li>
+        </ul>
+      </div>
+      <div class="pb-visual">
+        <div class="mini-cert">
+          <div class="seal">✓</div>
+          <div class="name">Certificate of Completion</div>
+          <div class="sub">ISSUED AUTOMATICALLY · 00:00:04 AFTER SESSION END</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-block rev">
+      <div>
+        <div class="pb-index">04 / MEASURE &amp; SCALE</div>
+        <h3>See trainer utilization and program health without asking anyone for a report.</h3>
+        <p class="desc">Know which trainers are at capacity, which locations are underused, and where the next training center should open — before a spreadsheet tells you three weeks late.</p>
+        <ul>
+          <li>Real-time trainer utilization by city</li>
+          <li>Multi-location, multi-tenant reporting</li>
+          <li>HRIS and CRM integrations</li>
+          <li>Exportable, audit-ready records on demand</li>
+        </ul>
+      </div>
+      <div class="pb-visual">
+        <div class="mini-metric-row"><span>Riyadh utilization</span><b>88%</b></div>
+        <div class="mini-metric-row"><span>Jeddah utilization</span><b>71%</b></div>
+        <div class="mini-metric-row"><span>Dammam utilization</span><b>94%</b></div>
+        <div class="mini-metric-row"><span>Idle trainers this week</span><b>2</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING MOAT -->
+<section class="section alt" id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Why This Scales Differently</span>
+      <h2>Growing your training program shouldn't grow your bill.</h2>
+      <p>Most platforms charge per learner — which means the more successful your training program gets, the more it costs you to run it. SimpliTrain charges a flat fee based on the team running training, not the number of people being trained.</p>
+    </div>
+    <div class="pricing-compare">
+      <div class="price-card bad">
+        <span class="k">Per-Learner Pricing</span>
+        <div class="line"><span>500 learners this year</span><b>Base price</b></div>
+        <div class="line"><span>5,000 learners next year</span><b>Price climbs with you</b></div>
+        <div class="line"><span>Renewal time</span><b>Fight over "active user" definitions</b></div>
+        <div class="line"><span>HRDF-subsidized volume grows</span><b>Your software cost grows too</b></div>
+      </div>
+      <div class="price-card good">
+        <span class="k">SimpliTrain</span>
+        <div class="line"><span>500 learners this year</span><b>Flat fee</b></div>
+        <div class="line"><span>5,000 learners next year</span><b>Same flat fee</b></div>
+        <div class="line"><span>Renewal time</span><b>No learner count to argue about</b></div>
+        <div class="line"><span>HRDF-subsidized volume grows</span><b>Your software cost doesn't move</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LANGUAGE -->
+<section class="section">
+  <div class="wrap">
+    <div class="lang-section">
+      <div>
+        <span class="ar-eyebrow" lang="ar">منصة تدريب موحّدة</span>
+        <h2>One platform. Two languages. Every learner included.</h2>
+        <p>SimpliTrain is available in multiple languages, including Arabic. Learner portals, certificates, notifications, and reporting can run in Arabic, English, or both — so your team and your learners each work the way they already do, without anyone translating by hand.</p>
+        <div class="lang-badges">
+          <span class="lang-badge"><span class="ar" lang="ar">متوفر بالعربية</span> · Available in Arabic</span>
+          <span class="lang-badge">Bilingual certificates</span>
+          <span class="lang-badge">Multi-language cohorts</span>
+        </div>
+      </div>
+      <div class="lang-visual">
+        <div class="lang-toggle-row"><span>Learner portal language</span><span class="tag">AR / EN</span></div>
+        <div class="lang-toggle-row"><span>Certificate language</span><span class="tag">AR / EN</span></div>
+        <div class="lang-toggle-row"><span>Trainer notifications</span><span class="tag">AR / EN</span></div>
+        <div class="lang-toggle-row"><span>Reporting &amp; exports</span><span class="tag">AR / EN</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="section alt" id="industries">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Built For How Saudi Industries Actually Train</span>
+      <h2>The same platform, tuned to how your sector really runs training.</h2>
+    </div>
+    <div class="industry-grid">
+      <div class="industry-card">
+        <span class="tag">Oil &amp; Gas</span>
+        <h3>Contractor &amp; HSE training</h3>
+        <p>Recurring certifications — permit-to-work, confined space, H2S awareness — scheduled and tracked across Eastern Province sites, with records ready whenever a vendor review asks for them.</p>
+      </div>
+      <div class="industry-card">
+        <span class="tag">Healthcare</span>
+        <h3>Multi-facility CME &amp; CPD</h3>
+        <p>Attendance and certification tracking across hospital networks, built for professional-development cycles that run on hours, not just completion checkboxes.</p>
+      </div>
+      <div class="industry-card">
+        <span class="tag">Giga-Projects</span>
+        <h3>Multi-contractor workforce training</h3>
+        <p>Coordinate training across dozens of contractors and sites at once — the operational layer megaproject timelines actually depend on.</p>
+      </div>
+      <div class="industry-card">
+        <span class="tag">Training Companies</span>
+        <h3>Multi-branch training centers</h3>
+        <p>Run every branch — and every instructor, room, and cohort in it — from one system, with revenue and utilization visible by location.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Results Training Teams See</span>
+      <h2>What changes when scheduling stops being the bottleneck.</h2>
+    </div>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="big">58%</div>
+        <div class="cap">Less time spent on scheduling and trainer coordination</div>
+        <div class="src">Multi-location IT training provider · 14 centers</div>
+      </div>
+      <div class="proof-card">
+        <div class="big">84%</div>
+        <div class="cap">Trainer utilization within the first 12 months on the platform</div>
+        <div class="src">Enterprise L&amp;D · Manufacturing</div>
+      </div>
+      <div class="proof-card">
+        <div class="big">4→1</div>
+        <div class="cap">Systems consolidated into a single SimpliTrain contract</div>
+        <div class="src">Healthcare training network · 9 countries</div>
+      </div>
+    </div>
+    <p class="proof-note">Results from SimpliTrain customers globally. We're building our first Saudi Arabia case studies now — ask us who else in the Kingdom is already on the platform.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section alt" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Common Questions</span>
+      <h2>What Saudi training teams usually ask us.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-q">Is SimpliTrain available in Arabic?<span class="plus">+</span></summary>
+        <div class="faq-a">Yes. The platform, learner portals, and certificates are available in Arabic and English, along with other languages, so your team and your learners can each work in the language they're most comfortable with.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Can SimpliTrain run training across multiple Saudi cities at once?<span class="plus">+</span></summary>
+        <div class="faq-a">Yes — multi-location and multi-tenant operations are core to the platform, not an add-on. Training companies run several branches, and enterprises coordinate training across multiple sites, all from one system.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">We already use another LMS or TMS. Do we have to replace it?<span class="plus">+</span></summary>
+        <div class="faq-a">No. SimpliTrain is modular. Many customers run it purely as the ILT/vILT operations layer — scheduling, trainer management, attendance — on top of an existing LMS like Cornerstone, Docebo, or SAP SuccessFactors. You can consolidate onto SimpliTrain's native LMS later, on your own timeline, or not at all.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Where is our training and learner data hosted?<span class="plus">+</span></summary>
+        <div class="faq-a">Data residency and hosting requirements vary by organization, especially for government and enterprise buyers. Talk to our team about your specific requirements and we'll walk you through what applies to your setup.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">How long does implementation take?<span class="plus">+</span></summary>
+        <div class="faq-a">Using SimpliTrain as a TMS layer over an existing LMS typically takes 4–6 weeks to go live. A full-platform implementation — TMS, LMS, assessments, and multi-location operations — typically takes 8–12 weeks, including data migration and trainer onboarding.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Is pricing really the same regardless of how many learners we train?<span class="plus">+</span></summary>
+        <div class="faq-a">Yes. SimpliTrain's flat pricing is based on the number of administrators and instructors running training, not the number of learners. A program with 500 learners and one with 50,000 cost the same to run, provided the team size stays the same.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="cta">
+  <div class="wrap">
+    <h2>See SimpliTrain run your training operations — on your own programs.</h2>
+    <span class="ar" lang="ar">احجزوا عرضاً توضيحياً على بياناتكم الفعلية.</span>
+    <p class="sub">30 minutes. No slides — we'll show the platform working on your training programs.</p>
+    <a class="btn-primary" href="#">Book a Demo</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <div class="fl">© SimpliTrain — Training Management Software for Saudi Arabia</div>
+    <div class="foot-links">
+      <a href="#platform">Platform</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#industries">Industries</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="foot-ar" lang="ar">سيمبلي ترين — برمجيات إدارة التدريب</div>
+  </div>
+</footer>
+
+</body>
+</html>
