@@ -439,192 +439,184 @@
   .lang-toggle-row .tag{font-family:var(--mono);font-size:11px;background:rgba(255,255,255,.12);padding:3px 9px;border-radius:100px;}
   @media (max-width:820px){.lang-section{grid-template-columns:1fr;padding:40px 26px;}}
 
-  /* ---------- CENTRAL HUB DIAGRAM & SECTOR MATRIX ---------- */
-  .industry-hub-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-    margin-top: 24px;
-  }
-
-  /* CENTRAL HUB DIAGRAM */
-  .hub-diagram-container {
+  /* ---------- GSAP INTERACTIVE SECTOR RADAR CONSOLE ---------- */
+  .sector-radar-wrapper {
     background: #0A120E;
-    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 24px;
-    padding: 50px 30px;
+    padding: 36px 40px;
+    color: #FFFFFF;
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 25px 50px -20px rgba(0, 0, 0, 0.6);
+    margin-top: 16px;
   }
 
-  .hub-diagram-title {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  .hub-diagram-title span {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--gold);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  .hub-diagram-title h3 {
-    font-size: 24px;
-    color: #FFFFFF;
-    margin-top: 6px;
-  }
-
-  .hub-layout {
-    display: grid;
-    grid-template-columns: 1fr 240px 1fr;
-    gap: 24px;
-    align-items: center;
-    position: relative;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .hub-col {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  /* Center Logo Node */
-  .hub-center-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    z-index: 10;
-  }
-
-  .hub-center-node {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #0E6B4F 0%, #0A4D39 100%);
-    border: 3px solid var(--gold);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 35px rgba(185, 137, 62, 0.4);
-    animation: hubPulse 3s infinite alternate ease-in-out;
-  }
-  @keyframes hubPulse {
-    0% { box-shadow: 0 0 25px rgba(185, 137, 62, 0.3); }
-    100% { box-shadow: 0 0 45px rgba(185, 137, 62, 0.6); }
-  }
-
-  .hub-center-node b {
-    font-family: var(--mono);
-    font-size: 15px;
-    color: #FFFFFF;
-    letter-spacing: 0.04em;
-  }
-  .hub-center-node span {
-    font-size: 11px;
-    color: var(--gold);
-    font-family: var(--mono);
-  }
-
-  /* Outer Industry Nodes */
-  .hub-node {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 16px;
-    padding: 16px 20px;
-    backdrop-filter: blur(8px);
-    transition: all 0.3s ease;
-    cursor: pointer;
-  }
-  .hub-node:hover {
-    background: rgba(14, 107, 79, 0.35);
-    border-color: var(--gold);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(185, 137, 62, 0.2);
-  }
-  .hub-node-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 6px;
-  }
-  .hub-node-header .icon { font-size: 18px; }
-  .hub-node-header h4 { font-size: 15px; color: #FFFFFF; font-weight: 700; margin: 0; }
-  .hub-node-tags {
-    font-size: 11.5px;
-    color: rgba(255, 255, 255, 0.7);
-    font-family: var(--mono);
-    line-height: 1.4;
-  }
-
-  /* SECTOR PILL MATRIX (OPTION 1) */
-  .sector-matrix-container {
-    background: #FFFFFF;
-    border: 1px solid var(--line);
-    border-radius: 24px;
-    padding: 40px 32px;
-    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.05);
-  }
-  .sector-matrix-head {
-    margin-bottom: 28px;
-  }
-  .sector-matrix-head h3 {
-    font-size: 22px;
-    margin-top: 4px;
-  }
-  .sector-matrix-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  .sector-card {
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 20px;
-    transition: all 0.25s ease;
-  }
-  .sector-card:hover {
-    border-color: var(--green);
-    transform: translateY(-2px);
-    background: #FFFFFF;
-  }
-  .sector-card-top {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 12px;
-  }
-  .sector-card-top .ico { font-size: 20px; }
-  .sector-card-top h4 { font-size: 16px; color: var(--ink); margin: 0; }
-  .sector-tags {
+  .radar-nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-  }
-  .sector-tag-pill {
-    font-family: var(--mono);
-    font-size: 11px;
-    padding: 3px 9px;
-    border-radius: 100px;
-    background: var(--card);
-    border: 1px solid var(--line);
-    color: var(--ink-soft);
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
   }
 
-  @media (max-width: 900px) {
-    .hub-layout { grid-template-columns: 1fr; gap: 20px; }
-    .hub-center-node { width: 120px; height: 120px; }
-    .sector-matrix-grid { grid-template-columns: repeat(2, 1fr); }
+  .radar-pill {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: rgba(255, 255, 255, 0.8);
+    font-family: var(--sans);
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 100px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
   }
-  @media (max-width: 600px) {
-    .sector-matrix-grid { grid-template-columns: 1fr; }
+  .radar-pill:hover {
+    background: rgba(255, 255, 255, 0.14);
+    color: #FFFFFF;
+    transform: translateY(-1px);
+  }
+  .radar-pill.active {
+    background: var(--gold);
+    color: #0A100C;
+    border-color: var(--gold);
+    box-shadow: 0 6px 20px rgba(185, 137, 62, 0.35);
+  }
+
+  .radar-progress-bar {
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    margin-bottom: 32px;
+    overflow: hidden;
+  }
+  .radar-progress-fill {
+    width: 0%;
+    height: 100%;
+    background: var(--gold);
+  }
+
+  .radar-stage-box {
+    position: relative;
+    min-height: 240px;
+  }
+
+  .radar-panel {
+    display: none;
+    opacity: 0;
+  }
+  .radar-panel.active {
+    display: block;
+    opacity: 1;
+  }
+
+  .radar-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 36px;
+    align-items: center;
+  }
+
+  .sector-badge {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .radar-left h3 {
+    font-size: 24px;
+    color: #FFFFFF;
+    font-family: var(--serif);
+    margin-bottom: 16px;
+  }
+
+  .sector-check-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .sector-check-list li {
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .sector-check-list .chk {
+    color: #2ECC71;
+    font-weight: bold;
+  }
+
+  .sector-pill-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .sector-pill-tags .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.85);
+    padding: 4px 12px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  /* Right Micro Console Widget */
+  .mini-console-card {
+    background: rgba(14, 22, 17, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  }
+  .console-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .dot-green {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #2ECC71;
+    letter-spacing: 0.06em;
+  }
+  .mono-code {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .console-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .console-metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13.5px;
+  }
+  .console-metric span { color: rgba(255, 255, 255, 0.7); }
+  .console-metric b { font-family: var(--mono); font-size: 13px; color: #FFFFFF; }
+
+  @media (max-width: 860px) {
+    .radar-grid { grid-template-columns: 1fr; gap: 24px; }
+    .sector-radar-wrapper { padding: 24px 20px; }
   }
 
   /* ---------- Proof stats ---------- */
@@ -1858,168 +1850,243 @@
   </div>
 </section>
 
-<!-- INDUSTRIES -->
+<!-- INDUSTRIES (GSAP INTERACTIVE RADAR CONSOLE) -->
 <section class="section alt" id="industries">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Built For How Saudi Industries Actually Train</span>
-      <h2>The same platform, tuned to how your sector really runs training.</h2>
-      <p>Quickly scan the key Saudi industries and specialized use cases powered by SimpliTrain across the Kingdom.</p>
+      <span class="eyebrow">Built For How Saudi Industries Train</span>
+      <h2>The same platform, tuned to how your sector really operates.</h2>
+      <p>Click any sector below to see live compliance workflows, specialized accreditation tracking, and audit readiness in action.</p>
     </div>
 
-    <div class="industry-hub-wrapper">
-      <!-- APPROACH A: CENTRAL SIMPLITRAIN LOGO RADIAL HUB DIAGRAM -->
-      <div class="hub-diagram-container">
-        <div class="hub-diagram-title">
-          <span>INTERACTIVE SECTOR ARCHITECTURE</span>
-          <h3>Centralized Operations for Every KSA Sector</h3>
-        </div>
-
-        <div class="hub-layout">
-          <!-- LEFT COLUMN SECTORS -->
-          <div class="hub-col">
-            <div class="hub-node">
-              <div class="hub-node-header">
-                <span class="icon">🛢️</span>
-                <h4>Oil &amp; Gas / Energy</h4>
-              </div>
-              <div class="hub-node-tags">HSE Certifications · H2S Safety · Permit-to-Work · Aramco Vendors</div>
-            </div>
-
-            <div class="hub-node">
-              <div class="hub-node-header">
-                <span class="icon">🏥</span>
-                <h4>Healthcare &amp; Medical</h4>
-              </div>
-              <div class="hub-node-tags">SCFHS CME Credits · CPD Recertification · Hospital Networks</div>
-            </div>
-
-            <div class="hub-node">
-              <div class="hub-node-header">
-                <span class="icon">🏗️</span>
-                <h4>Giga-Projects &amp; Infra</h4>
-              </div>
-              <div class="hub-node-tags">Site Onboarding · Multi-Contractor Tracking · Megaproject Safety</div>
-            </div>
-          </div>
-
-          <!-- CENTER NODE (SIMPLITRAIN LOGO) -->
-          <div class="hub-center-box">
-            <div class="hub-center-node">
-              <b>SimpliTrain</b>
-              <span>KSA ENGINE</span>
-            </div>
-          </div>
-
-          <!-- RIGHT COLUMN SECTORS -->
-          <div class="hub-col">
-            <div class="hub-node">
-              <div class="hub-node-header">
-                <span class="icon">🏫</span>
-                <h4>Training Institutes</h4>
-              </div>
-              <div class="hub-node-tags">TVTC Licensed Centers · Multi-Branch Ops · Cohort Scheduling</div>
-            </div>
-
-            <div class="hub-node">
-              <div class="hub-node-header">
-                <span class="icon">✈️</span>
-                <h4>Aviation &amp; Logistics</h4>
-              </div>
-              <div class="hub-node-tags">GACA Recertification · Ground Crew Safety · Fleet Audits</div>
-            </div>
-
-            <div class="hub-node">
-              <div class="hub-node-header">
-                <span class="icon">🏢</span>
-                <h4>Government &amp; Corporate</h4>
-              </div>
-              <div class="hub-node-tags">Nitaqat Accreditations · Qiwa Logs · Saudization Profession Audits</div>
-            </div>
-          </div>
-        </div>
+    <!-- GSAP RADAR SHOWCASE CONTAINER -->
+    <div class="sector-radar-wrapper">
+      <!-- RADAR NAV PILLS BAR -->
+      <div class="radar-nav">
+        <button class="radar-pill active" data-sector="oilgas">
+          <span class="ico">🛢️</span> Oil &amp; Gas
+        </button>
+        <button class="radar-pill" data-sector="healthcare">
+          <span class="ico">🏥</span> Healthcare
+        </button>
+        <button class="radar-pill" data-sector="gigaprojects">
+          <span class="ico">🏗️</span> Giga-Projects
+        </button>
+        <button class="radar-pill" data-sector="training">
+          <span class="ico">🏫</span> Training Centers
+        </button>
+        <button class="radar-pill" data-sector="aviation">
+          <span class="ico">✈️</span> Aviation
+        </button>
+        <button class="radar-pill" data-sector="government">
+          <span class="ico">🏢</span> Government &amp; Enterprise
+        </button>
       </div>
 
-      <!-- APPROACH B: 6-SECTOR PILL MATRIX GRID (OPTION 1) -->
-      <div class="sector-matrix-container">
-        <div class="sector-matrix-head">
-          <span class="eyebrow" style="color:var(--green-deep);">QUICK-SCAN SECTOR OVERVIEW</span>
-          <h3>Sub-Sectors &amp; Specialized Use Cases</h3>
-        </div>
+      <!-- AUTO-PROGRESS LINE -->
+      <div class="radar-progress-bar"><div class="radar-progress-fill" id="radar-progress"></div></div>
 
-        <div class="sector-matrix-grid">
-          <div class="sector-card">
-            <div class="sector-card-top">
-              <span class="ico">🛢️</span>
-              <h4>Oil &amp; Gas / Energy</h4>
-            </div>
-            <div class="sector-tags">
-              <span class="sector-tag-pill">HSE Permits</span>
-              <span class="sector-tag-pill">H2S Safety</span>
-              <span class="sector-tag-pill">IKTVA Scoring</span>
-            </div>
-          </div>
+      <!-- INTERACTIVE DISPLAY STAGE -->
+      <div class="radar-stage-box">
 
-          <div class="sector-card">
-            <div class="sector-card-top">
-              <span class="ico">🏥</span>
-              <h4>Healthcare &amp; Medical</h4>
+        <!-- PANEL 1: OIL & GAS -->
+        <div class="radar-panel active" id="sector-oilgas">
+          <div class="radar-grid">
+            <div class="radar-left">
+              <span class="sector-badge">ENERGY &amp; INDUSTRIAL</span>
+              <h3>Oil &amp; Gas / Contractor Safety</h3>
+              <ul class="sector-check-list">
+                <li><span class="chk">✓</span> Permit-to-Work (PTW) &amp; H2S Recertification</li>
+                <li><span class="chk">✓</span> Aramco Vendor Audit &amp; IKTVA Score Tracking</li>
+                <li><span class="chk">✓</span> Eastern Province Multi-Site Coverage</li>
+              </ul>
+              <div class="sector-pill-tags">
+                <span class="tag">HSE Safety</span>
+                <span class="tag">Aramco IKTVA</span>
+                <span class="tag">Permit-to-Work</span>
+              </div>
             </div>
-            <div class="sector-tags">
-              <span class="sector-tag-pill">SCFHS CME Hours</span>
-              <span class="sector-tag-pill">CPD Cycles</span>
-              <span class="sector-tag-pill">Hospitals</span>
-            </div>
-          </div>
-
-          <div class="sector-card">
-            <div class="sector-card-top">
-              <span class="ico">🏗️</span>
-              <h4>Giga-Projects</h4>
-            </div>
-            <div class="sector-tags">
-              <span class="sector-tag-pill">Site Onboarding</span>
-              <span class="sector-tag-pill">Subcontractors</span>
-              <span class="sector-tag-pill">Multi-Site</span>
-            </div>
-          </div>
-
-          <div class="sector-card">
-            <div class="sector-card-top">
-              <span class="ico">🏫</span>
-              <h4>Training Centers</h4>
-            </div>
-            <div class="sector-tags">
-              <span class="sector-tag-pill">TVTC Centers</span>
-              <span class="sector-tag-pill">Multi-Branch</span>
-              <span class="sector-tag-pill">Commercial</span>
-            </div>
-          </div>
-
-          <div class="sector-card">
-            <div class="sector-card-top">
-              <span class="ico">✈️</span>
-              <h4>Aviation &amp; Defense</h4>
-            </div>
-            <div class="sector-tags">
-              <span class="sector-tag-pill">GACA Audits</span>
-              <span class="sector-tag-pill">Ground Staff</span>
-              <span class="sector-tag-pill">Field Safety</span>
-            </div>
-          </div>
-
-          <div class="sector-card">
-            <div class="sector-card-top">
-              <span class="ico">🏢</span>
-              <h4>Government &amp; Enterprise</h4>
-            </div>
-            <div class="sector-tags">
-              <span class="sector-tag-pill">Nitaqat 2026</span>
-              <span class="sector-tag-pill">Qiwa Audits</span>
-              <span class="sector-tag-pill">Saudization</span>
+            <div class="radar-right">
+              <div class="mini-console-card">
+                <div class="console-head">
+                  <span class="dot-green">● LIVE HSE STATUS</span>
+                  <span class="mono-code">RUH-RIG-8821</span>
+                </div>
+                <div class="console-body">
+                  <div class="console-metric"><span>Contractors Certified</span><b>1,420 Active</b></div>
+                  <div class="console-metric"><span>H2S Recertification</span><b style="color:#2ECC71;">99.4% Pass Rate</b></div>
+                  <div class="console-metric"><span>IKTVA Local Spend</span><b style="color:var(--gold);">Audit Ready Export</b></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        <!-- PANEL 2: HEALTHCARE -->
+        <div class="radar-panel" id="sector-healthcare">
+          <div class="radar-grid">
+            <div class="radar-left">
+              <span class="sector-badge">MEDICAL &amp; CLINICAL</span>
+              <h3>Multi-Hospital CME &amp; CPD</h3>
+              <ul class="sector-check-list">
+                <li><span class="chk">✓</span> SCFHS Mandatory Attendance &amp; 75% CME Threshold</li>
+                <li><span class="chk">✓</span> Multi-Facility Hospital &amp; Clinic Credit Logging</li>
+                <li><span class="chk">✓</span> Instant Automatic Medical Certificate Generation</li>
+              </ul>
+              <div class="sector-pill-tags">
+                <span class="tag">SCFHS CME</span>
+                <span class="tag">CPD Credits</span>
+                <span class="tag">Hospital Networks</span>
+              </div>
+            </div>
+            <div class="radar-right">
+              <div class="mini-console-card">
+                <div class="console-head">
+                  <span class="dot-green">● SCFHS CREDIT TRACKER</span>
+                  <span class="mono-code">CME-MED-2026</span>
+                </div>
+                <div class="console-body">
+                  <div class="console-metric"><span>CME Hours Logged</span><b>75 / 75 Verified</b></div>
+                  <div class="console-metric"><span>Hospital Network</span><b style="color:#2ECC71;">100% Compliant</b></div>
+                  <div class="console-metric"><span>Auto Certificate</span><b style="color:var(--gold);">Issued in 4 sec</b></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL 3: GIGA-PROJECTS -->
+        <div class="radar-panel" id="sector-gigaprojects">
+          <div class="radar-grid">
+            <div class="radar-left">
+              <span class="sector-badge">MEGAPROJECT INFRASTRUCTURE</span>
+              <h3>Subcontractor Workforce Ops</h3>
+              <ul class="sector-check-list">
+                <li><span class="chk">✓</span> Centralized Onboarding Across Dozens of Contractors</li>
+                <li><span class="chk">✓</span> Real-Time Gate Pass &amp; Safety Induction Logs</li>
+                <li><span class="chk">✓</span> Multi-Site Operations across NEOM, Red Sea, Qiddiya</li>
+              </ul>
+              <div class="sector-pill-tags">
+                <span class="tag">Site Onboarding</span>
+                <span class="tag">Contractor Portal</span>
+                <span class="tag">Multi-Site</span>
+              </div>
+            </div>
+            <div class="radar-right">
+              <div class="mini-console-card">
+                <div class="console-head">
+                  <span class="dot-green">● SITE SAFETY RADAR</span>
+                  <span class="mono-code">KSA-GIGA-04</span>
+                </div>
+                <div class="console-body">
+                  <div class="console-metric"><span>Active Subcontractors</span><b>38 Companies</b></div>
+                  <div class="console-metric"><span>Inductions Completed</span><b style="color:#2ECC71;">12,840 Workers</b></div>
+                  <div class="console-metric"><span>Gate Clearances</span><b style="color:var(--gold);">Live Syncing</b></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL 4: TRAINING CENTERS -->
+        <div class="radar-panel" id="sector-training">
+          <div class="radar-grid">
+            <div class="radar-left">
+              <span class="sector-badge">COMMERCIAL INSTITUTES</span>
+              <h3>TVTC Multi-Branch Management</h3>
+              <ul class="sector-check-list">
+                <li><span class="chk">✓</span> Unified Master Calendar for Instructors &amp; Rooms</li>
+                <li><span class="chk">✓</span> TVTC License Compliance &amp; Attendance Logs</li>
+                <li><span class="chk">✓</span> Real-Time Location Revenue &amp; Trainer Utilization</li>
+              </ul>
+              <div class="sector-pill-tags">
+                <span class="tag">TVTC Accredited</span>
+                <span class="tag">Multi-Branch</span>
+                <span class="tag">Trainer Allocation</span>
+              </div>
+            </div>
+            <div class="radar-right">
+              <div class="mini-console-card">
+                <div class="console-head">
+                  <span class="dot-green">● BRANCH UTILIZATION</span>
+                  <span class="mono-code">TVTC-INST-99</span>
+                </div>
+                <div class="console-body">
+                  <div class="console-metric"><span>Riyadh Branch</span><b style="color:#2ECC71;">92% Capacity</b></div>
+                  <div class="console-metric"><span>Jeddah Branch</span><b style="color:#2ECC71;">84% Capacity</b></div>
+                  <div class="console-metric"><span>Dammam Branch</span><b style="color:var(--gold);">95% Capacity</b></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL 5: AVIATION -->
+        <div class="radar-panel" id="sector-aviation">
+          <div class="radar-grid">
+            <div class="radar-left">
+              <span class="sector-badge">AVIATION &amp; DEFENSE</span>
+              <h3>GACA Safety Recertification</h3>
+              <ul class="sector-check-list">
+                <li><span class="chk">✓</span> Mandatory GACA Flight Crew &amp; Ground Staff Tracking</li>
+                <li><span class="chk">✓</span> Automated Expiration Alerts Before Licenses Lapse</li>
+                <li><span class="chk">✓</span> Immutable Inspection Log Exports for Safety Audits</li>
+              </ul>
+              <div class="sector-pill-tags">
+                <span class="tag">GACA Audits</span>
+                <span class="tag">Ground Staff</span>
+                <span class="tag">Safety Compliance</span>
+              </div>
+            </div>
+            <div class="radar-right">
+              <div class="mini-console-card">
+                <div class="console-head">
+                  <span class="dot-green">● GACA FLIGHT AUDIT</span>
+                  <span class="mono-code">GACA-AIR-102</span>
+                </div>
+                <div class="console-body">
+                  <div class="console-metric"><span>Crew Recertified</span><b>480 Technical Staff</b></div>
+                  <div class="console-metric"><span>Expiration Risk</span><b style="color:#2ECC71;">0 Lapsed Licences</b></div>
+                  <div class="console-metric"><span>Safety Audit Status</span><b style="color:var(--gold);">100% Verified</b></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL 6: GOVERNMENT -->
+        <div class="radar-panel" id="sector-government">
+          <div class="radar-grid">
+            <div class="radar-left">
+              <span class="sector-badge">GOVERNMENT &amp; ENTERPRISE</span>
+              <h3>Nitaqat &amp; Qiwa Accreditation</h3>
+              <ul class="sector-check-list">
+                <li><span class="chk">✓</span> Profession-Specific Accreditation across 269 Roles</li>
+                <li><span class="chk">✓</span> Real-Time Digitally Documented Qiwa Training Logs</li>
+                <li><span class="chk">✓</span> HRDF Reimbursement Reporting &amp; Local Content Scoring</li>
+              </ul>
+              <div class="sector-pill-tags">
+                <span class="tag">Nitaqat 2026</span>
+                <span class="tag">Qiwa Logs</span>
+                <span class="tag">Saudization Roles</span>
+              </div>
+            </div>
+            <div class="radar-right">
+              <div class="mini-console-card">
+                <div class="console-head">
+                  <span class="dot-green">● QIWA AUDIT READINESS</span>
+                  <span class="mono-code">MHRSD-SA-2026</span>
+                </div>
+                <div class="console-body">
+                  <div class="console-metric"><span>Saudization Roles</span><b>269 Roles Verified</b></div>
+                  <div class="console-metric"><span>Qiwa Sync</span><b style="color:#2ECC71;">Passed Verification</b></div>
+                  <div class="console-metric"><span>HRDF Rebate Logs</span><b style="color:var(--gold);">Automated Export</b></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -2256,6 +2323,69 @@
     showcaseSlides.forEach((slide, i) => {
       slide.addEventListener('click', () => updateShowcaseCarousel(i));
     });
+
+    // GSAP INTERACTIVE SECTOR RADAR CONSOLE ENGINE
+    const radarPills = document.querySelectorAll('.radar-pill');
+    const radarPanels = document.querySelectorAll('.radar-panel');
+    const radarProgress = document.getElementById('radar-progress');
+
+    let currentSectorIndex = 0;
+    let sectorInterval = null;
+    const sectorDuration = 4000;
+
+    function switchSector(index) {
+      if (radarPills.length === 0) return;
+      currentSectorIndex = (index + radarPills.length) % radarPills.length;
+      const targetSector = radarPills[currentSectorIndex].getAttribute('data-sector');
+
+      radarPills.forEach((p, i) => {
+        if (i === currentSectorIndex) p.classList.add('active');
+        else p.classList.remove('active');
+      });
+
+      radarPanels.forEach(panel => {
+        if (panel.id === `sector-${targetSector}`) {
+          panel.classList.add('active');
+          if (typeof gsap !== 'undefined') {
+            gsap.fromTo(panel, 
+              { opacity: 0, y: 15, scale: 0.98 }, 
+              { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "power2.out" }
+            );
+          }
+        } else {
+          panel.classList.remove('active');
+        }
+      });
+
+      resetRadarProgress();
+    }
+
+    function resetRadarProgress() {
+      if (radarProgress && typeof gsap !== 'undefined') {
+        gsap.killTweensOf(radarProgress);
+        gsap.fromTo(radarProgress, { width: "0%" }, { width: "100%", duration: 4, ease: "linear" });
+      }
+    }
+
+    function startRadarCycle() {
+      resetRadarProgress();
+      if (sectorInterval) clearInterval(sectorInterval);
+      sectorInterval = setInterval(() => {
+        switchSector(currentSectorIndex + 1);
+      }, sectorDuration);
+    }
+
+    radarPills.forEach((pill, idx) => {
+      pill.addEventListener('click', () => {
+        clearInterval(sectorInterval);
+        switchSector(idx);
+        startRadarCycle();
+      });
+    });
+
+    if (radarPills.length > 0) {
+      startRadarCycle();
+    }
   });
 </script>
 </body>
