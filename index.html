@@ -323,17 +323,112 @@
   .mini-metric-row:last-child{border-bottom:none;}
   .mini-metric-row b{font-family:var(--mono);color:var(--green-deep);}
 
-  /* ---------- Pricing moat ---------- */
-  .pricing-compare{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px;}
-  .price-card{border-radius:var(--radius);padding:28px 26px;border:1px solid var(--line);}
-  .price-card.bad{background:var(--card);}
-  .price-card.good{background:var(--green-deep);color:#fff;}
-  .price-card .k{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;opacity:.7;margin-bottom:16px;display:block;}
-  .price-card .line{display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.08);}
-  .price-card.good .line{border-bottom:1px solid rgba(255,255,255,.16);}
-  .price-card .line:last-child{border-bottom:none;}
-  .price-card .line b{font-family:var(--mono);}
-  @media (max-width:760px){.pricing-compare{grid-template-columns:1fr;}}
+  /* ---------- REFRESHED PRICING SECTION ---------- */
+  .pricing-pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 16px;
+    align-items: stretch;
+  }
+
+  .price-pillar-card {
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 10px 30px -15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+  }
+  .price-pillar-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1);
+  }
+
+  .price-pillar-card.featured {
+    background: var(--green-deep);
+    color: #FFFFFF;
+    border-color: var(--green-deep);
+    box-shadow: 0 20px 45px -15px rgba(14, 107, 79, 0.4);
+  }
+  .price-pillar-card.featured h3 {
+    color: #FFFFFF;
+  }
+  .price-pillar-card.featured p {
+    color: #DCEFE6;
+  }
+
+  .pillar-badge {
+    position: absolute;
+    top: -14px;
+    left: 28px;
+    background: var(--gold);
+    color: #0E1411;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 4px 14px;
+    border-radius: 100px;
+  }
+
+  .pillar-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(14, 107, 79, 0.08);
+    color: var(--green-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .price-pillar-card.featured .pillar-icon {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--gold);
+  }
+
+  .price-pillar-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .price-pillar-card p {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .pillar-features {
+    list-style: none;
+    padding: 0;
+    margin: auto 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+  }
+  .price-pillar-card.featured .pillar-features {
+    border-top-color: rgba(255, 255, 255, 0.15);
+  }
+  .pillar-features li {
+    font-size: 13.5px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-weight: 500;
+  }
+  .price-pillar-card.featured .pillar-features li {
+    color: #FFFFFF;
+  }
+
+  @media (max-width: 960px) {
+    .pricing-pillar-grid { grid-template-columns: 1fr; }
+  }
 
   /* ---------- Language section ---------- */
   .lang-section{
@@ -1557,27 +1652,57 @@
 </section>
 
 <!-- PRICING MOAT -->
+<!-- PRICING VALUE PILLARS -->
 <section class="section alt" id="pricing">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Why This Scales Differently</span>
-      <h2>Growing your training program shouldn't grow your bill.</h2>
-      <p>Most platforms charge per learner, which means the more successful your training program gets, the more it costs you to run it. SimpliTrain offers predictable flat-rate pricing for professional training companies based on admin &amp; instructor seats, with custom enterprise quotes available.</p>
+      <span class="eyebrow">Predictable Pricing Model</span>
+      <h2>Scale your training volume without scaling your software bill.</h2>
+      <p>Traditional platforms penalize growth by charging per learner. SimpliTrain offers predictable flat-rate pricing based on your admin &amp; instructor team, with unlimited learner access included.</p>
     </div>
-    <div class="pricing-compare">
-      <div class="price-card bad">
-        <span class="k">Per-Learner Pricing</span>
-        <div class="line"><span>Expanding learner volume</span><b>Price climbs with every user</b></div>
-        <div class="line"><span>Annual renewal time</span><b>Fight over "active user" definitions</b></div>
-        <div class="line"><span>HRDF-subsidized volume grows</span><b>Your software bill grows too</b></div>
-        <div class="line"><span>Multi-branch scaling</span><b>Unpredictable per-user costs</b></div>
+
+    <div class="pricing-pillar-grid">
+      <!-- CARD 1: PREDICTABLE SEAT MODEL -->
+      <div class="price-pillar-card">
+        <div class="pillar-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Predictable Seat Pricing</h3>
+        <p>Pay only for your core administrators and instructors. No surprise user add-ons or annual renewal disputes over "active learner" definitions.</p>
+        <ul class="pillar-features">
+          <li><span style="color:var(--green); font-weight:bold;">✓</span> Admin &amp; Trainer Seat Model</li>
+          <li><span style="color:var(--green); font-weight:bold;">✓</span> Fixed Annual Budgeting</li>
+          <li><span style="color:var(--green); font-weight:bold;">✓</span> Unlimited Active Learners</li>
+        </ul>
       </div>
-      <div class="price-card good">
-        <span class="k">SimpliTrain</span>
-        <div class="line"><span>Professional Training Companies</span><b>Predictable flat-rate pricing</b></div>
-        <div class="line"><span>Expanding learner volume</span><b>No per-learner penalty fee</b></div>
-        <div class="line"><span>HRDF-subsidized volume grows</span><b>Your software cost stays flat</b></div>
-        <div class="line"><span>Enterprise &amp; Custom Requirements</span><b>Contact us for a custom quote</b></div>
+
+      <!-- CARD 2: ZERO GROWTH PENALTY (FEATURED) -->
+      <div class="price-pillar-card featured">
+        <div class="pillar-badge">MOST POPULAR IN KSA</div>
+        <div class="pillar-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+        </div>
+        <h3>Zero Growth Penalty</h3>
+        <p>Whether you train 500 or 50,000 learners across Riyadh, Jeddah, and Dammam, your software cost remains 100% flat and predictable.</p>
+        <ul class="pillar-features">
+          <li><span style="color:var(--gold); font-weight:bold;">✓</span> Multi-City Branch Operations</li>
+          <li><span style="color:var(--gold); font-weight:bold;">✓</span> HRDF &amp; Subsidized Program Scale</li>
+          <li><span style="color:var(--gold); font-weight:bold;">✓</span> Unlimited Certificate Issuance</li>
+        </ul>
+      </div>
+
+      <!-- CARD 3: ENTERPRISE CUSTOM -->
+      <div class="price-pillar-card">
+        <div class="pillar-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+        </div>
+        <h3>Enterprise &amp; Custom Quotes</h3>
+        <p>Dedicated KSA cloud hosting, TVTC &amp; Aramco IKTVA audit reporting, custom HRIS integrations, and tailored SLA guarantees for large organizations.</p>
+        <ul class="pillar-features">
+          <li><span style="color:var(--green); font-weight:bold;">✓</span> KSA PDPL Data Residency</li>
+          <li><span style="color:var(--green); font-weight:bold;">✓</span> HRIS &amp; ERP Integrations</li>
+          <li><span style="color:var(--green); font-weight:bold;">✓</span> Dedicated Account Manager</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -1737,6 +1862,11 @@
       gsap.from(".comp-card", {
         scrollTrigger: { trigger: ".comparison-grid", start: "top 85%" },
         y: 30, opacity: 0, duration: 0.7, stagger: 0.18, ease: "power2.out"
+      });
+
+      gsap.from(".price-pillar-card", {
+        scrollTrigger: { trigger: ".pricing-pillar-grid", start: "top 85%" },
+        y: 30, opacity: 0, duration: 0.7, stagger: 0.15, ease: "power2.out"
       });
 
       gsap.from(".industry-card", {
