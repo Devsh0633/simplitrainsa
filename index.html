@@ -487,18 +487,11 @@
     box-shadow: 0 8px 20px -5px rgba(14, 107, 79, 0.35);
   }
 
-  .radar-progress-bar {
+  .sector-divider-line {
     width: 100%;
-    height: 3px;
+    height: 1px;
     background: var(--line);
-    border-radius: 100px;
     margin-bottom: 36px;
-    overflow: hidden;
-  }
-  .radar-progress-fill {
-    width: 0%;
-    height: 100%;
-    background: var(--gold);
   }
 
   .radar-stage-box {
@@ -1886,8 +1879,8 @@
         </button>
       </div>
 
-      <!-- AUTO-PROGRESS LINE -->
-      <div class="radar-progress-bar"><div class="radar-progress-fill" id="radar-progress"></div></div>
+      <!-- STATIC ELEGANT DIVIDER LINE -->
+      <div class="sector-divider-line"></div>
 
       <!-- INTERACTIVE DISPLAY STAGE -->
       <div class="radar-stage-box">
@@ -2327,14 +2320,12 @@
       slide.addEventListener('click', () => updateShowcaseCarousel(i));
     });
 
-    // GSAP INTERACTIVE SECTOR RADAR CONSOLE ENGINE
+    // CLASSY ENTERPRISE SECTOR SHOWCASE ENGINE
     const radarPills = document.querySelectorAll('.radar-pill');
     const radarPanels = document.querySelectorAll('.radar-panel');
-    const radarProgress = document.getElementById('radar-progress');
 
     let currentSectorIndex = 0;
     let sectorInterval = null;
-    const sectorDuration = 4000;
 
     function switchSector(index) {
       if (radarPills.length === 0) return;
@@ -2351,44 +2342,22 @@
           panel.classList.add('active');
           if (typeof gsap !== 'undefined') {
             gsap.fromTo(panel, 
-              { opacity: 0, y: 15, scale: 0.98 }, 
-              { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "power2.out" }
+              { opacity: 0, y: 12, scale: 0.99 }, 
+              { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "power2.out" }
             );
           }
         } else {
           panel.classList.remove('active');
         }
       });
-
-      resetRadarProgress();
-    }
-
-    function resetRadarProgress() {
-      if (radarProgress && typeof gsap !== 'undefined') {
-        gsap.killTweensOf(radarProgress);
-        gsap.fromTo(radarProgress, { width: "0%" }, { width: "100%", duration: 4, ease: "linear" });
-      }
-    }
-
-    function startRadarCycle() {
-      resetRadarProgress();
-      if (sectorInterval) clearInterval(sectorInterval);
-      sectorInterval = setInterval(() => {
-        switchSector(currentSectorIndex + 1);
-      }, sectorDuration);
     }
 
     radarPills.forEach((pill, idx) => {
       pill.addEventListener('click', () => {
-        clearInterval(sectorInterval);
+        if (sectorInterval) clearInterval(sectorInterval);
         switchSector(idx);
-        startRadarCycle();
       });
     });
-
-    if (radarPills.length > 0) {
-      startRadarCycle();
-    }
   });
 </script>
 </body>
