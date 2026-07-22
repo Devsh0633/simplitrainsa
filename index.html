@@ -328,43 +328,50 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    margin-top: 16px;
+    margin-top: 20px;
     align-items: stretch;
+    width: 100%;
   }
 
   .price-pillar-card {
     background: #FFFFFF;
     border: 1px solid var(--line);
+    border-top: 4px solid var(--green-deep);
     border-radius: 20px;
-    padding: 36px 28px;
+    padding: 34px 26px;
     display: flex;
     flex-direction: column;
     position: relative;
-    box-shadow: 0 10px 30px -15px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 30px -15px rgba(0,0,0,0.06);
     transition: all 0.3s ease;
+  }
+  .price-pillar-card:nth-child(3) {
+    border-top-color: var(--gold);
   }
   .price-pillar-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1);
+    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.12);
   }
 
+  /* Featured Card (Dark High-Contrast Emerald) */
   .price-pillar-card.featured {
-    background: var(--green-deep);
+    background: #0A3C2F;
     color: #FFFFFF;
-    border-color: var(--green-deep);
-    box-shadow: 0 20px 45px -15px rgba(14, 107, 79, 0.4);
+    border: 1px solid #0A3C2F;
+    border-top: 4px solid var(--gold);
+    box-shadow: 0 20px 45px -15px rgba(10, 60, 47, 0.5);
   }
   .price-pillar-card.featured h3 {
-    color: #FFFFFF;
+    color: #FFFFFF !important;
   }
   .price-pillar-card.featured p {
-    color: #DCEFE6;
+    color: #E2F4EC !important;
   }
 
   .pillar-badge {
     position: absolute;
     top: -14px;
-    left: 28px;
+    left: 24px;
     background: var(--gold);
     color: #0E1411;
     font-family: var(--mono);
@@ -373,13 +380,14 @@
     letter-spacing: 0.08em;
     padding: 4px 14px;
     border-radius: 100px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   }
 
   .pillar-icon {
     width: 48px;
     height: 48px;
     border-radius: 12px;
-    background: rgba(14, 107, 79, 0.08);
+    background: #F0F7F4;
     color: var(--green-deep);
     display: flex;
     align-items: center;
@@ -388,12 +396,14 @@
   }
   .price-pillar-card.featured .pillar-icon {
     background: rgba(255, 255, 255, 0.15);
-    color: var(--gold);
+    color: #FFD580;
   }
 
   .price-pillar-card h3 {
-    font-size: 20px;
+    font-size: 21px;
+    color: var(--ink);
     margin-bottom: 10px;
+    font-family: var(--serif);
   }
   .price-pillar-card p {
     font-size: 14.5px;
@@ -408,25 +418,29 @@
     margin: auto 0 0 0;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     border-top: 1px solid var(--line);
     padding-top: 20px;
   }
   .price-pillar-card.featured .pillar-features {
-    border-top-color: rgba(255, 255, 255, 0.15);
+    border-top-color: rgba(255, 255, 255, 0.18);
   }
   .pillar-features li {
-    font-size: 13.5px;
+    font-size: 14px;
     display: flex;
     align-items: center;
     gap: 9px;
     font-weight: 500;
+    color: var(--ink);
   }
   .price-pillar-card.featured .pillar-features li {
-    color: #FFFFFF;
+    color: #FFFFFF !important;
   }
 
-  @media (max-width: 960px) {
+  @media (max-width: 1024px) {
+    .pricing-pillar-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 680px) {
     .pricing-pillar-grid { grid-template-columns: 1fr; }
   }
 
@@ -1862,11 +1876,6 @@
       gsap.from(".comp-card", {
         scrollTrigger: { trigger: ".comparison-grid", start: "top 85%" },
         y: 30, opacity: 0, duration: 0.7, stagger: 0.18, ease: "power2.out"
-      });
-
-      gsap.from(".price-pillar-card", {
-        scrollTrigger: { trigger: ".pricing-pillar-grid", start: "top 85%" },
-        y: 30, opacity: 0, duration: 0.7, stagger: 0.15, ease: "power2.out"
       });
 
       gsap.from(".industry-card", {
