@@ -628,9 +628,48 @@
   .acc-box p { font-size: 13px; margin: 0; color: var(--ink-soft); line-height: 1.45; }
 
   @media (max-width: 860px) {
-    .ff-grid, .bento-matrix-grid, .acc-grid { grid-template-columns: 1fr; }
+    .ff-grid, .bento-matrix-grid, .acc-grid, .ops-board-sim, .hover-matrix-grid, .step-grid, .impact-cards-grid { grid-template-columns: 1fr; }
     .split-slider-stage { height: 420px; }
   }
+
+  /* APPROACH 5: LIVE OPS BOARD SIMULATION */
+  .ops-board-sim { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .sim-col { background: #FFFFFF; border: 1px solid var(--line); border-radius: 20px; padding: 24px; box-shadow: 0 10px 30px -15px rgba(0,0,0,0.05); }
+  .sim-head { font-family: var(--mono); font-size: 11px; font-weight: 700; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; }
+  .sim-head.red { color: #E74C3C; }
+  .sim-head.green { color: var(--green-deep); }
+  .sim-rows { display: flex; flex-direction: column; gap: 12px; }
+  .sim-row { padding: 12px 14px; border-radius: 10px; font-size: 13px; display: flex; align-items: center; justify-content: space-between; }
+  .sim-row.bad { background: #FFF5F5; border: 1px solid #FADBD8; color: #C0392B; }
+  .sim-row.good { background: #E8F8F5; border: 1px solid #A3E4D7; color: var(--green-deep); }
+
+  /* APPROACH 6: HOVER-LINKED MATRIX GRID */
+  .hover-matrix-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .matrix-pair-card { background: #FFFFFF; border: 1px solid var(--line); border-radius: 16px; padding: 20px; transition: all 0.25s ease; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .matrix-pair-card:hover { border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 10px 25px -10px rgba(185,137,62,0.2); }
+  .pair-prob { border-right: 1px solid var(--line); padding-right: 16px; }
+  .pair-prob span { font-family: var(--mono); font-size: 10px; color: #E74C3C; font-weight: 700; }
+  .pair-sol span { font-family: var(--mono); font-size: 10px; color: var(--green-deep); font-weight: 700; }
+  .matrix-pair-card p { font-size: 13px; margin: 4px 0 0 0; color: var(--ink-soft); line-height: 1.4; }
+
+  /* APPROACH 7: STEP CAROUSEL */
+  .step-carousel-box { background: #FFFFFF; border: 1px solid var(--line); border-radius: 24px; padding: 32px; text-align: center; position: relative; }
+  .step-slide { display: none; opacity: 0; }
+  .step-slide.active { display: block; opacity: 1; }
+  .step-tag { font-family: var(--mono); font-size: 11px; color: var(--gold); font-weight: 700; letter-spacing: 0.08em; display: block; margin-bottom: 8px; }
+  .step-slide h3 { font-size: 22px; font-family: var(--serif); margin-bottom: 24px; }
+  .step-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; }
+  .step-nav-btns { display: flex; justify-content: center; gap: 12px; margin-top: 24px; }
+  .step-nav-btn { background: var(--bg); border: 1px solid var(--line); padding: 8px 18px; border-radius: 100px; font-size: 13px; cursor: pointer; font-weight: 600; }
+
+  /* APPROACH 8: EXECUTIVE IMPACT CARDS */
+  .impact-cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .impact-card { background: #FFFFFF; border: 1px solid var(--line); border-radius: 18px; padding: 24px 20px; box-shadow: 0 10px 25px -12px rgba(0,0,0,0.06); }
+  .impact-num { font-family: var(--serif); font-size: 36px; color: var(--green-deep); line-height: 1; margin-bottom: 6px; }
+  .impact-title { font-size: 14.5px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+  .impact-diff { font-size: 12px; color: var(--ink-soft); line-height: 1.4; border-top: 1px solid var(--line); padding-top: 8px; }
+  .impact-diff del { color: #E74C3C; display: block; margin-bottom: 2px; }
+  .impact-diff ins { color: var(--green-deep); text-decoration: none; font-weight: 600; display: block; }
 
   .radar-stage-box {
     position: relative;
@@ -1743,7 +1782,19 @@
         Approach 3: Interactive Split-Slider
       </button>
       <button class="ux-approach-pill" data-approach="approach4">
-        Approach 4: Interactive Accordion Matrix
+        Approach 4: Accordion Matrix
+      </button>
+      <button class="ux-approach-pill" data-approach="approach5">
+        Approach 5: Live Ops Sim Board
+      </button>
+      <button class="ux-approach-pill" data-approach="approach6">
+        Approach 6: Hover-Linked Grid
+      </button>
+      <button class="ux-approach-pill" data-approach="approach7">
+        Approach 7: Workflow Carousel
+      </button>
+      <button class="ux-approach-pill" data-approach="approach8">
+        Approach 8: Executive Impact Cards
       </button>
     </div>
 
@@ -2028,6 +2079,214 @@
             </div>
           </div>
 
+        </div>
+      </div>
+
+      <!-- ==========================================
+           APPROACH 5: LIVE OPS SIMULATION BOARD 
+           ========================================== -->
+      <div class="ux-approach-panel" id="panel-approach5">
+        <div class="ops-board-sim">
+          <div class="sim-col">
+            <div class="sim-head red">
+              <span>⚠️ TRADITIONAL ERRORS (REAL-TIME LOGS)</span>
+              <span>12 ERRORS / MONTH</span>
+            </div>
+            <div class="sim-rows">
+              <div class="sim-row bad">
+                <span>Riyadh Instructor Conflict</span>
+                <b>❌ Night-before alert</b>
+              </div>
+              <div class="sim-row bad">
+                <span>Certificate Generation</span>
+                <b>❌ 48 hours manual entry</b>
+              </div>
+              <div class="sim-row bad">
+                <span>Room #3 Availability</span>
+                <b>❌ WhatsApp unconfirmed</b>
+              </div>
+              <div class="sim-row bad">
+                <span>Dammam Attendance Sheet</span>
+                <b>❌ Paper sheet lost</b>
+              </div>
+            </div>
+          </div>
+
+          <div class="sim-col">
+            <div class="sim-head green">
+              <span>⚡ SIMPLITRAIN AUTOMATED LOGS</span>
+              <span>100% AUDIT READY</span>
+            </div>
+            <div class="sim-rows">
+              <div class="sim-row good">
+                <span>Riyadh Instructor Sync</span>
+                <b>✅ 100% Conflict Free</b>
+              </div>
+              <div class="sim-row good">
+                <span>Certificate Auto-Issue</span>
+                <b>✅ 4 Seconds Delivery</b>
+              </div>
+              <div class="sim-row good">
+                <span>Room #3 Central Booking</span>
+                <b>✅ Auto-allocated</b>
+              </div>
+              <div class="sim-row good">
+                <span>Dammam Attendance Sync</span>
+                <b>✅ Zoom/Teams Live Sync</b>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==========================================
+           APPROACH 6: HOVER-LINKED MATRIX GRID
+           ========================================== -->
+      <div class="ux-approach-panel" id="panel-approach6">
+        <div class="hover-matrix-grid">
+          <div class="matrix-pair-card">
+            <div class="pair-prob">
+              <span>TRADITIONAL WAY</span>
+              <p>Double-booked instructors discovered hours before session starts.</p>
+            </div>
+            <div class="pair-sol">
+              <span>SIMPLITRAIN WAY</span>
+              <p>Every instructor &amp; room live on 1 conflict-free master calendar.</p>
+            </div>
+          </div>
+
+          <div class="matrix-pair-card">
+            <div class="pair-prob">
+              <span>TRADITIONAL WAY</span>
+              <p>Certificates typed 1-by-1 in Canva or Word document templates.</p>
+            </div>
+            <div class="pair-sol">
+              <span>SIMPLITRAIN WAY</span>
+              <p>Issued automatically 4 seconds after session ends in AR/EN.</p>
+            </div>
+          </div>
+
+          <div class="matrix-pair-card">
+            <div class="pair-prob">
+              <span>TRADITIONAL WAY</span>
+              <p>WhatsApp messaging groups used as unofficial room booking tool.</p>
+            </div>
+            <div class="pair-sol">
+              <span>SIMPLITRAIN WAY</span>
+              <p>Centralized booking portal for trainers, admins &amp; enterprise clients.</p>
+            </div>
+          </div>
+
+          <div class="matrix-pair-card">
+            <div class="pair-prob">
+              <span>TRADITIONAL WAY</span>
+              <p>Zero visibility on trainer capacity in Riyadh vs Dammam.</p>
+            </div>
+            <div class="pair-sol">
+              <span>SIMPLITRAIN WAY</span>
+              <p>1 Real-time utilization dashboard across all KSA locations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==========================================
+           APPROACH 7: WORKFLOW CAROUSEL
+           ========================================== -->
+      <div class="ux-approach-panel" id="panel-approach7">
+        <div class="step-carousel-box">
+          <div class="step-slide active" id="step-slide-1">
+            <span class="step-tag">STEP 01 / 03 · SCHEDULING &amp; ROSTERS</span>
+            <h3>How SimpliTrain Eliminates Trainer Double Bookings</h3>
+            <div class="step-grid">
+              <div class="acc-box prob">
+                <b>Spreadsheet Chaos</b>
+                <p>Instructor availability tracked in out-of-date shared Excel files. Night-before double-booking panics across cities.</p>
+              </div>
+              <div class="acc-box sol">
+                <b>SimpliTrain Automated Engine</b>
+                <p>One real-time conflict-free calendar across Riyadh, Jeddah &amp; Dammam with instant allocation alerts.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-slide" id="step-slide-2">
+            <span class="step-tag">STEP 02 / 03 · CERTIFICATES &amp; AUDITS</span>
+            <h3>How SimpliTrain Automates Certificate Issuance</h3>
+            <div class="step-grid">
+              <div class="acc-box prob">
+                <b>Spreadsheet Chaos</b>
+                <p>Hours wasted editing Word templates 1-by-1 per student after every single completed course.</p>
+              </div>
+              <div class="acc-box sol">
+                <b>SimpliTrain Automated Engine</b>
+                <p>Certificates generated &amp; issued automatically 4 seconds after session ends in Arabic and English.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-slide" id="step-slide-3">
+            <span class="step-tag">STEP 03 / 03 · MULTI-CITY VISIBILITY</span>
+            <h3>How SimpliTrain Unifies Kingdom-Wide Operations</h3>
+            <div class="step-grid">
+              <div class="acc-box prob">
+                <b>Spreadsheet Chaos</b>
+                <p>WhatsApp groups &amp; paper attendance sheets re-typed days later or lost completely.</p>
+              </div>
+              <div class="acc-box sol">
+                <b>SimpliTrain Automated Engine</b>
+                <p>1 Real-time executive dashboard showing trainer utilization across all Saudi Arabia facilities.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-nav-btns">
+            <button class="step-nav-btn" id="step-prev-btn">← Previous Step</button>
+            <button class="step-nav-btn" id="step-next-btn">Next Step →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==========================================
+           APPROACH 8: EXECUTIVE IMPACT CARDS
+           ========================================== -->
+      <div class="ux-approach-panel" id="panel-approach8">
+        <div class="impact-cards-grid">
+          <div class="impact-card">
+            <div class="impact-num">0</div>
+            <div class="impact-title">Double Bookings</div>
+            <div class="impact-diff">
+              <del>Was: 12/mo Excel conflicts</del>
+              <ins>Now: 100% Conflict Free</ins>
+            </div>
+          </div>
+
+          <div class="impact-card">
+            <div class="impact-num">4 sec</div>
+            <div class="impact-title">Auto Certification</div>
+            <div class="impact-diff">
+              <del>Was: 48 hrs manual Word entry</del>
+              <ins>Now: Instant Auto-Delivery</ins>
+            </div>
+          </div>
+
+          <div class="impact-card">
+            <div class="impact-num">1</div>
+            <div class="impact-title">Master Calendar</div>
+            <div class="impact-diff">
+              <del>Was: 14 WhatsApp chats</del>
+              <ins>Now: Single KSA Hub</ins>
+            </div>
+          </div>
+
+          <div class="impact-card">
+            <div class="impact-num">100%</div>
+            <div class="impact-title">Audit Readiness</div>
+            <div class="impact-diff">
+              <del>Was: Paper attendance sheets</del>
+              <ins>Now: Automated Digital Logs</ins>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -2850,6 +3109,32 @@
         });
       }
     });
+
+    // Approach 7: Step Carousel Logic
+    const stepSlides = document.querySelectorAll('.step-slide');
+    const stepPrevBtn = document.getElementById('step-prev-btn');
+    const stepNextBtn = document.getElementById('step-next-btn');
+    let currentStepIndex = 0;
+
+    function updateStepCarousel(idx) {
+      if (stepSlides.length === 0) return;
+      currentStepIndex = (idx + stepSlides.length) % stepSlides.length;
+      stepSlides.forEach((s, i) => {
+        if (i === currentStepIndex) {
+          s.classList.add('active');
+          if (typeof gsap !== 'undefined') {
+            gsap.fromTo(s, { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.35 });
+          }
+        } else {
+          s.classList.remove('active');
+        }
+      });
+    }
+
+    if (stepPrevBtn && stepNextBtn) {
+      stepPrevBtn.addEventListener('click', () => updateStepCarousel(currentStepIndex - 1));
+      stepNextBtn.addEventListener('click', () => updateStepCarousel(currentStepIndex + 1));
+    }
   });
 </script>
 </body>
