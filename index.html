@@ -921,6 +921,43 @@
     min-height: 480px;
   }
 
+  .showcase-side-btn {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    z-index: 30;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(18, 28, 22, 0.75);
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .showcase-side-btn:hover {
+    background: var(--gold);
+    color: #0A100C;
+    border-color: var(--gold);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 12px 35px rgba(185, 137, 62, 0.45);
+  }
+  .showcase-side-btn:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+  .showcase-side-btn.showcase-prev {
+    left: 12px;
+  }
+  .showcase-side-btn.showcase-next {
+    right: 12px;
+  }
+
   .showcase-slide {
     width: 100%;
     max-width: 820px;
@@ -999,33 +1036,6 @@
     margin-left: 10px;
   }
 
-  .showcase-controls {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .showcase-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.3);
-    background: rgba(255,255,255,0.06);
-    color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 20px;
-    transition: all 0.25s ease;
-    backdrop-filter: blur(8px);
-  }
-  .showcase-btn:hover {
-    background: var(--gold);
-    color: #0A100C;
-    border-color: var(--gold);
-    transform: scale(1.08);
-  }
-
   .showcase-dots {
     display: flex;
     gap: 8px;
@@ -1049,6 +1059,12 @@
     .showcase-slide { flex: 0 0 92%; }
     .showcase-slide.prev, .showcase-slide.next { opacity: 0; display: none; }
     .showcase-track-container { min-height: 260px; }
+    .showcase-side-btn {
+      width: 42px;
+      height: 42px;
+    }
+    .showcase-side-btn.showcase-prev { left: 4px; }
+    .showcase-side-btn.showcase-next { right: 4px; }
   }
 </style>
 </head>
@@ -1323,6 +1339,14 @@
     </div>
 
     <div class="showcase-carousel-wrapper">
+      <!-- SIDE NAVIGATION BUTTONS (LEFT & RIGHT) -->
+      <button class="showcase-side-btn showcase-prev" id="showcase-prev-btn" aria-label="Previous Slide">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="showcase-side-btn showcase-next" id="showcase-next-btn" aria-label="Next Slide">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+
       <div class="showcase-track-container">
         <!-- SLIDE 1: ARABIC DASHBOARD -->
         <div class="showcase-slide active" data-index="0" data-title="Bilingual Arabic Admin Dashboard" data-tech="{لوحة التحكم، المقررات، جدول التدريب والشهادات}" data-ar="واجهة عربية كاملة لإدارة التدريب">
@@ -1350,7 +1374,7 @@
         </div>
       </div>
 
-      <!-- BOTTOM META & CONTROLS -->
+      <!-- BOTTOM META & PAGINATION DOTS -->
       <div class="showcase-meta-row">
         <div class="showcase-title-box">
           <h3 id="showcase-active-title">Bilingual Arabic Admin Dashboard</h3>
@@ -1360,16 +1384,12 @@
           </div>
         </div>
 
-        <div class="showcase-controls">
-          <div class="showcase-dots">
-            <span class="showcase-dot active" data-goto="0"></span>
-            <span class="showcase-dot" data-goto="1"></span>
-            <span class="showcase-dot" data-goto="2"></span>
-            <span class="showcase-dot" data-goto="3"></span>
-            <span class="showcase-dot" data-goto="4"></span>
-          </div>
-          <button class="showcase-btn" id="showcase-prev-btn" aria-label="Previous Slide">←</button>
-          <button class="showcase-btn" id="showcase-next-btn" aria-label="Next Slide">→</button>
+        <div class="showcase-dots">
+          <span class="showcase-dot active" data-goto="0"></span>
+          <span class="showcase-dot" data-goto="1"></span>
+          <span class="showcase-dot" data-goto="2"></span>
+          <span class="showcase-dot" data-goto="3"></span>
+          <span class="showcase-dot" data-goto="4"></span>
         </div>
       </div>
     </div>
