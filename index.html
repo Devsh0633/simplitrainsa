@@ -495,6 +495,143 @@
     margin-bottom: 36px;
   }
 
+  /* ---------- 4 UX APPROACHES COMPARISON SECTION ---------- */
+  .ux-approach-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+
+  .ux-approach-pill {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-family: var(--sans);
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .ux-approach-pill:hover {
+    background: var(--card);
+    color: var(--ink);
+  }
+  .ux-approach-pill.active {
+    background: var(--green-deep);
+    color: #FFFFFF;
+    border-color: var(--green-deep);
+    box-shadow: 0 6px 18px -4px rgba(14, 107, 79, 0.35);
+  }
+
+  .ux-approach-panel {
+    display: none;
+    opacity: 0;
+  }
+  .ux-approach-panel.active {
+    display: block;
+    opacity: 1;
+  }
+
+  /* APPROACH 1: FRICTION ⟷ FLOW SWITCHER */
+  .friction-flow-box {
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 36px 40px;
+    box-shadow: 0 15px 40px -15px rgba(0,0,0,0.06);
+  }
+  .ff-toggle-bar {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .ff-btn {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    padding: 10px 22px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .ff-btn.active#ff-btn-friction {
+    background: #FFF2F2;
+    border-color: #E74C3C;
+    color: #C0392B;
+  }
+  .ff-btn.active#ff-btn-flow {
+    background: #E8F8F5;
+    border-color: var(--green-deep);
+    color: var(--green-deep);
+  }
+  .ff-card { display: none; opacity: 0; }
+  .ff-card.active { display: block; opacity: 1; }
+  .ff-head { margin-bottom: 24px; text-align: center; }
+  .ff-head h3 { font-size: 24px; font-family: var(--serif); margin-top: 6px; }
+  .ff-badge.problem { font-family: var(--mono); font-size: 11px; color: #E74C3C; font-weight: 700; letter-spacing: 0.06em; }
+  .ff-badge.solution { font-family: var(--mono); font-size: 11px; color: var(--green-deep); font-weight: 700; letter-spacing: 0.06em; }
+  .ff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .ff-metric-item { background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: flex; gap: 14px; align-items: flex-start; }
+  .ff-metric-item .ico { font-size: 20px; }
+  .ff-metric-item h4 { font-size: 15px; margin: 0 0 4px 0; color: var(--ink); }
+  .ff-metric-item p { font-size: 13px; color: var(--ink-soft); margin: 0; line-height: 1.45; }
+
+  /* APPROACH 2: 3 BENTO CARDS */
+  .bento-matrix-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .bento-card { background: #FFFFFF; border: 1px solid var(--line); border-radius: 20px; padding: 28px 24px; box-shadow: 0 10px 30px -15px rgba(0,0,0,0.05); }
+  .bento-num { font-family: var(--mono); font-size: 12px; color: var(--gold); font-weight: 700; display: block; margin-bottom: 8px; }
+  .bento-card h3 { font-size: 18px; margin-bottom: 20px; color: var(--ink); }
+  .bento-split { display: flex; flex-direction: column; gap: 14px; }
+  .bento-before, .bento-after { background: var(--bg); border-radius: 12px; padding: 14px; border: 1px solid var(--line); }
+  .bento-before .tag { font-family: var(--mono); font-size: 10px; color: #E74C3C; font-weight: 700; display: block; margin-bottom: 4px; }
+  .bento-after .tag.gold { font-family: var(--mono); font-size: 10px; color: var(--green-deep); font-weight: 700; display: block; margin-bottom: 4px; }
+  .bento-split p { font-size: 12.5px; color: var(--ink-soft); margin: 0; line-height: 1.4; }
+  .bento-arrow { text-align: center; color: var(--ink-faint); font-weight: bold; }
+
+  /* APPROACH 3: SPLIT-SLIDER */
+  .split-slider-container { background: #FFFFFF; border: 1px solid var(--line); border-radius: 24px; padding: 24px; }
+  .split-slider-stage { position: relative; height: 320px; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); }
+  .split-layer { position: absolute; inset: 0; padding: 36px 40px; display: flex; align-items: center; }
+  .before-layer { background: #FAF5F5; color: #2C3E50; }
+  .after-layer { background: var(--green-deep); color: #FFFFFF; width: 50%; border-right: 3px solid var(--gold); }
+  .split-badge.problem { font-family: var(--mono); font-size: 11px; color: #C0392B; letter-spacing: 0.08em; font-weight: 700; }
+  .split-badge.solution { font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 0.08em; font-weight: 700; }
+  .split-content h3 { font-size: 22px; margin: 6px 0 16px 0; }
+  .split-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
+  .split-handle { position: absolute; top: 0; bottom: 0; left: 50%; transform: translateX(-50%); cursor: ew-resize; z-index: 20; display: flex; align-items: center; justify-content: center; }
+  .handle-circle { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); color: #0A100C; font-weight: bold; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+  .split-hint { text-align: center; font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint); margin-top: 12px; }
+
+  /* APPROACH 4: ACCORDION MATRIX */
+  .accordion-matrix { display: flex; flex-direction: column; gap: 12px; }
+  .acc-row { background: #FFFFFF; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; transition: all 0.25s ease; }
+  .acc-header { padding: 20px 24px; display: flex; align-items: center; gap: 16px; cursor: pointer; }
+  .acc-header .num { font-family: var(--mono); font-size: 13px; color: var(--gold); font-weight: 700; }
+  .acc-header h4 { font-size: 16px; margin: 0; flex: 1; color: var(--ink); }
+  .acc-icon { font-size: 18px; font-weight: bold; color: var(--ink-soft); transition: transform 0.25s ease; }
+  .acc-row.active .acc-icon { transform: rotate(45deg); }
+  .acc-content { display: none; padding: 0 24px 20px 24px; }
+  .acc-row.active .acc-content { display: block; }
+  .acc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .acc-box { padding: 16px; border-radius: 12px; }
+  .acc-box.prob { background: #FFF5F5; border: 1px solid #FADBD8; }
+  .acc-box.sol { background: #E8F8F5; border: 1px solid #A3E4D7; }
+  .acc-box b { font-size: 13px; display: block; margin-bottom: 6px; }
+  .acc-box.prob b { color: #C0392B; }
+  .acc-box.sol b { color: var(--green-deep); }
+  .acc-box p { font-size: 13px; margin: 0; color: var(--ink-soft); line-height: 1.45; }
+
+  @media (max-width: 860px) {
+    .ff-grid, .bento-matrix-grid, .acc-grid { grid-template-columns: 1fr; }
+    .split-slider-stage { height: 420px; }
+  }
+
   .radar-stage-box {
     position: relative;
     min-height: 240px;
@@ -1585,105 +1722,315 @@
   </div>
 </section>
 
-<!-- THE REAL PAIN (SIDE-BY-SIDE COMPARISON) -->
+<!-- THE REAL PAIN (4 LIVE UX COMPARISON APPROACHES) -->
 <section class="section alt" id="reality2">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">The Part No One Puts On A Slide</span>
+      <span class="eyebrow">Operational Transformation</span>
       <h2>Growth is good. Running it on a spreadsheet is not.</h2>
-      <p>Direct side-by-side comparison of traditional corporate training management vs. running on SimpliTrain.</p>
+      <p>Compare the 4 modern UI/UX design approaches below to see how traditional spreadsheet chaos transforms into SimpliTrain control.</p>
     </div>
 
-    <div class="comparison-grid">
-      <!-- LEFT CARD: SPREADSHEET CHAOS (PROBLEM) -->
-      <div class="comp-card problem">
-        <div class="comp-badge">⚠️ Traditional Way</div>
-        <h3>Spreadsheet Chaos</h3>
-        <p class="comp-sub">Fragmented tools, manual updates, and constant scheduling risks.</p>
-        <ul class="comp-list">
-          <li class="comp-item">
-            <span class="comp-icon" aria-hidden="true">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </span>
-            <span>Double-booked instructors discovered the night before a session.</span>
-          </li>
-          <li class="comp-item">
-            <span class="comp-icon" aria-hidden="true">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </span>
-            <span>Instructor availability tracked in out-of-date shared spreadsheets.</span>
-          </li>
-          <li class="comp-item">
-            <span class="comp-icon" aria-hidden="true">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </span>
-            <span>Certificates built manually one-by-one in document editors.</span>
-          </li>
-          <li class="comp-item">
-            <span class="comp-icon" aria-hidden="true">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </span>
-            <span>WhatsApp groups used as an unofficial booking system.</span>
-          </li>
-          <li class="comp-item">
-            <span class="comp-icon" aria-hidden="true">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </span>
-            <span>No clear visibility on trainer capacity in Riyadh vs. Dammam.</span>
-          </li>
-          <li class="comp-item">
-            <span class="comp-icon" aria-hidden="true">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </span>
-            <span>Paper attendance sheets that get re-typed days later or lost.</span>
-          </li>
-        </ul>
+    <!-- APPROACH SWITCHER NAV PILLS -->
+    <div class="ux-approach-nav">
+      <button class="ux-approach-pill active" data-approach="approach1">
+        Approach 1: Friction ⟷ Flow Switcher
+      </button>
+      <button class="ux-approach-pill" data-approach="approach2">
+        Approach 2: 3 Bento Cards
+      </button>
+      <button class="ux-approach-pill" data-approach="approach3">
+        Approach 3: Interactive Split-Slider
+      </button>
+      <button class="ux-approach-pill" data-approach="approach4">
+        Approach 4: Interactive Accordion Matrix
+      </button>
+    </div>
+
+    <div class="ux-approach-stage">
+
+      <!-- ==========================================
+           APPROACH 1: FRICTION ⟷ FLOW SEGMENTED SWITCHER 
+           ========================================== -->
+      <div class="ux-approach-panel active" id="panel-approach1">
+        <div class="friction-flow-box">
+          <div class="ff-toggle-bar">
+            <button class="ff-btn active" id="ff-btn-friction">🔴 Traditional Friction</button>
+            <button class="ff-btn" id="ff-btn-flow">🟢 SimpliTrain Flow</button>
+          </div>
+
+          <!-- FRICTION CARD (ACTIVE DEFAULT) -->
+          <div class="ff-card friction-state active" id="ff-state-friction">
+            <div class="ff-head">
+              <span class="ff-badge problem">TRADITIONAL WAY</span>
+              <h3>Spreadsheet Chaos &amp; Operational Friction</h3>
+              <p>Fragmented tools, manual updates, and constant scheduling risks across cities.</p>
+            </div>
+            <div class="ff-grid">
+              <div class="ff-metric-item">
+                <span class="ico">⚠️</span>
+                <div>
+                  <h4>Night-Before Double Bookings</h4>
+                  <p>Trainer conflicts discovered hours before a live session starts.</p>
+                </div>
+              </div>
+              <div class="ff-metric-item">
+                <span class="ico">📄</span>
+                <div>
+                  <h4>Manual 1-by-1 Certificates</h4>
+                  <p>Hours wasted re-typing student names into Canva or Word templates.</p>
+                </div>
+              </div>
+              <div class="ff-metric-item">
+                <span class="ico">💬</span>
+                <div>
+                  <h4>WhatsApp Group Bookings</h4>
+                  <p>Unofficial messaging chats used to coordinate room availability.</p>
+                </div>
+              </div>
+              <div class="ff-metric-item">
+                <span class="ico">❓</span>
+                <div>
+                  <h4>Hidden City Capacity</h4>
+                  <p>No real-time visibility into Riyadh vs. Dammam trainer utilization.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FLOW CARD -->
+          <div class="ff-card flow-state" id="ff-state-flow">
+            <div class="ff-head">
+              <span class="ff-badge solution">SIMPLITRAIN WAY</span>
+              <h3>Automated &amp; Unified Flow</h3>
+              <p>Real-time conflict-free scheduling, instant certificates, and 100% visibility.</p>
+            </div>
+            <div class="ff-grid">
+              <div class="ff-metric-item">
+                <span class="ico">✅</span>
+                <div>
+                  <h4>1 Conflict-Free Master Calendar</h4>
+                  <p>Every instructor, room, and city synced live on a single calendar.</p>
+                </div>
+              </div>
+              <div class="ff-metric-item">
+                <span class="ico">⚡</span>
+                <div>
+                  <h4>4-Second Instant Certificates</h4>
+                  <p>Automatically generated &amp; issued immediately upon session completion.</p>
+                </div>
+              </div>
+              <div class="ff-metric-item">
+                <span class="ico">🌐</span>
+                <div>
+                  <h4>Centralized Booking Portal</h4>
+                  <p>Unified booking interface for trainers, admins, and enterprise clients.</p>
+                </div>
+              </div>
+              <div class="ff-metric-item">
+                <span class="ico">📊</span>
+                <div>
+                  <h4>Kingdom-Wide Utilization Dashboard</h4>
+                  <p>Real-time capacity and revenue tracking across all KSA locations.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- RIGHT CARD: SIMPLITRAIN WAY (SOLUTION) -->
-      <div class="comp-card solution">
-        <div class="comp-badge">⚡ SimpliTrain Way</div>
-        <h3>Automated &amp; Unified</h3>
-        <p class="comp-sub">Real-time scheduling, instant certificates, and zero conflict alerts.</p>
-        <ul class="comp-list">
-          <li class="comp-item">
-            <span class="comp-icon" aria-hidden="true">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </span>
-            <span>Every instructor, classroom, and city live on one conflict-free calendar.</span>
-          </li>
-          <li class="comp-item">
-            <span class="comp-icon" aria-hidden="true">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </span>
-            <span>Real-time availability and automatic conflict alerts.</span>
-          </li>
-          <li class="comp-item">
-            <span class="comp-icon" aria-hidden="true">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </span>
-            <span>Certificates generated automatically 4 seconds after session ends.</span>
-          </li>
-          <li class="comp-item">
-            <span class="comp-icon" aria-hidden="true">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </span>
-            <span>Centralized booking portal for trainers, admins, and learners.</span>
-          </li>
-          <li class="comp-item">
-            <span class="comp-icon" aria-hidden="true">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </span>
-            <span>One real-time dashboard showing utilization across all KSA locations.</span>
-          </li>
-          <li class="comp-item">
-            <span class="comp-icon" aria-hidden="true">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </span>
-            <span>Digital attendance captured automatically via room or Zoom/Teams.</span>
-          </li>
-        </ul>
+      <!-- ==========================================
+           APPROACH 2: 3 OPERATIONAL BENTO CARDS 
+           ========================================== -->
+      <div class="ux-approach-panel" id="panel-approach2">
+        <div class="bento-matrix-grid">
+          <!-- CARD 1 -->
+          <div class="bento-card">
+            <span class="bento-num">01</span>
+            <h3>Scheduling &amp; Roster Engine</h3>
+            <div class="bento-split">
+              <div class="bento-before">
+                <span class="tag">TRADITIONAL</span>
+                <p>Out-of-date shared Excel files &amp; night-before double-booking panics.</p>
+              </div>
+              <div class="bento-arrow">→</div>
+              <div class="bento-after">
+                <span class="tag gold">SIMPLITRAIN</span>
+                <p>One conflict-free calendar across Riyadh, Jeddah &amp; Dammam with instant alerts.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 2 -->
+          <div class="bento-card">
+            <span class="bento-num">02</span>
+            <h3>Certification &amp; Accreditation</h3>
+            <div class="bento-split">
+              <div class="bento-before">
+                <span class="tag">TRADITIONAL</span>
+                <p>Hours lost editing Word certificate templates 1-by-1 per student.</p>
+              </div>
+              <div class="bento-arrow">→</div>
+              <div class="bento-after">
+                <span class="tag gold">SIMPLITRAIN</span>
+                <p>Certificates generated automatically 4 seconds after session ends.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3 -->
+          <div class="bento-card">
+            <span class="bento-num">03</span>
+            <h3>Kingdom-Wide Operations</h3>
+            <div class="bento-split">
+              <div class="bento-before">
+                <span class="tag">TRADITIONAL</span>
+                <p>WhatsApp groups &amp; paper attendance sheets re-typed days later.</p>
+              </div>
+              <div class="bento-arrow">→</div>
+              <div class="bento-after">
+                <span class="tag gold">SIMPLITRAIN</span>
+                <p>1 Real-time dashboard showing trainer utilization across all KSA cities.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- ==========================================
+           APPROACH 3: INTERACTIVE SPLIT-SLIDER
+           ========================================== -->
+      <div class="ux-approach-panel" id="panel-approach3">
+        <div class="split-slider-container">
+          <div class="split-slider-stage" id="split-stage">
+            
+            <!-- BEFORE LAYER (BACKGROUND) -->
+            <div class="split-layer before-layer">
+              <div class="split-content">
+                <span class="split-badge problem">TRADITIONAL WAY</span>
+                <h3>Traditional Manual Operations</h3>
+                <ul class="split-list">
+                  <li>❌ Night-before trainer double-bookings</li>
+                  <li>❌ Manual 1-by-1 certificate generation in Word</li>
+                  <li>❌ Unofficial WhatsApp room bookings</li>
+                  <li>❌ Zero visibility into Riyadh vs Dammam capacity</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- AFTER LAYER (CLIP-PATH TOP) -->
+            <div class="split-layer after-layer" id="after-layer">
+              <div class="split-content">
+                <span class="split-badge solution">SIMPLITRAIN WAY</span>
+                <h3>Automated &amp; Unified Control</h3>
+                <ul class="split-list">
+                  <li>✅ Conflict-free master calendar across KSA</li>
+                  <li>✅ Instant 4-second automatic certificate delivery</li>
+                  <li>✅ Centralized booking portal for admins &amp; learners</li>
+                  <li>✅ 1 Real-time utilization dashboard for all cities</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- DRAG HANDLE -->
+            <div class="split-handle" id="split-handle">
+              <div class="handle-line"></div>
+              <div class="handle-circle">↔</div>
+            </div>
+          </div>
+          <div class="split-hint">Hover or click slider to interactively transform operation view</div>
+        </div>
+      </div>
+
+      <!-- ==========================================
+           APPROACH 4: INTERACTIVE ACCORDION MATRIX
+           ========================================== -->
+      <div class="ux-approach-panel" id="panel-approach4">
+        <div class="accordion-matrix">
+
+          <div class="acc-row active">
+            <div class="acc-header">
+              <span class="num">01</span>
+              <h4>Trainer Scheduling &amp; Roster Conflict Prevention</h4>
+              <span class="acc-icon">+</span>
+            </div>
+            <div class="acc-content">
+              <div class="acc-grid">
+                <div class="acc-box prob">
+                  <b>Traditional Way</b>
+                  <p>Instructor availability tracked in out-of-date spreadsheets. Conflicts discovered the night before a live session.</p>
+                </div>
+                <div class="acc-box sol">
+                  <b>SimpliTrain Way</b>
+                  <p>Every instructor, classroom, and city live on one conflict-free calendar with real-time conflict prevention.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="acc-row">
+            <div class="acc-header">
+              <span class="num">02</span>
+              <h4>Automated Certificate Generation &amp; Accreditation</h4>
+              <span class="acc-icon">+</span>
+            </div>
+            <div class="acc-content">
+              <div class="acc-grid">
+                <div class="acc-box prob">
+                  <b>Traditional Way</b>
+                  <p>Certificates built manually one-by-one in Canva or Word templates, taking hours of admin work after every course.</p>
+                </div>
+                <div class="acc-box sol">
+                  <b>SimpliTrain Way</b>
+                  <p>Certificates generated &amp; delivered automatically 4 seconds after session completion in Arabic and English.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="acc-row">
+            <div class="acc-header">
+              <span class="num">03</span>
+              <h4>Multi-City Trainer Utilization (Riyadh, Jeddah, Dammam)</h4>
+              <span class="acc-icon">+</span>
+            </div>
+            <div class="acc-content">
+              <div class="acc-grid">
+                <div class="acc-box prob">
+                  <b>Traditional Way</b>
+                  <p>No clear visibility into trainer capacity by location. Over-hiring in Riyadh while trainers in Jeddah sit idle.</p>
+                </div>
+                <div class="acc-box sol">
+                  <b>SimpliTrain Way</b>
+                  <p>One unified executive dashboard showing real-time utilization and room capacity across all KSA facilities.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="acc-row">
+            <div class="acc-header">
+              <span class="num">04</span>
+              <h4>Digital Attendance &amp; Virtual Delivery Integration</h4>
+              <span class="acc-icon">+</span>
+            </div>
+            <div class="acc-content">
+              <div class="acc-grid">
+                <div class="acc-box prob">
+                  <b>Traditional Way</b>
+                  <p>Paper attendance sheets that get re-typed days later or lost. WhatsApp chats used to confirm room entries.</p>
+                </div>
+                <div class="acc-box sol">
+                  <b>SimpliTrain Way</b>
+                  <p>Digital attendance captured automatically via room check-ins or direct Zoom/Teams live session sync.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -2418,6 +2765,90 @@
         if (sectorInterval) clearInterval(sectorInterval);
         switchSector(idx);
       });
+    });
+
+    // 4 UX APPROACHES COMPARISON HANDLERS
+    const uxPills = document.querySelectorAll('.ux-approach-pill');
+    const uxPanels = document.querySelectorAll('.ux-approach-panel');
+
+    uxPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        const target = pill.getAttribute('data-approach');
+        uxPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        uxPanels.forEach(panel => {
+          if (panel.id === `panel-${target}`) {
+            panel.classList.add('active');
+            if (typeof gsap !== 'undefined') {
+              gsap.fromTo(panel, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.35 });
+            }
+          } else {
+            panel.classList.remove('active');
+          }
+        });
+      });
+    });
+
+    // Approach 1: Friction vs Flow Switcher
+    const ffBtnFriction = document.getElementById('ff-btn-friction');
+    const ffBtnFlow = document.getElementById('ff-btn-flow');
+    const ffStateFriction = document.getElementById('ff-state-friction');
+    const ffStateFlow = document.getElementById('ff-state-flow');
+
+    if (ffBtnFriction && ffBtnFlow) {
+      ffBtnFriction.addEventListener('click', () => {
+        ffBtnFriction.classList.add('active');
+        ffBtnFlow.classList.remove('active');
+        ffStateFriction.classList.add('active');
+        ffStateFlow.classList.remove('active');
+        if (typeof gsap !== 'undefined') {
+          gsap.fromTo(ffStateFriction, { opacity: 0, scale: 0.98 }, { opacity: 1, scale: 1, duration: 0.3 });
+        }
+      });
+
+      ffBtnFlow.addEventListener('click', () => {
+        ffBtnFlow.classList.add('active');
+        ffBtnFriction.classList.remove('active');
+        ffStateFlow.classList.add('active');
+        ffStateFriction.classList.remove('active');
+        if (typeof gsap !== 'undefined') {
+          gsap.fromTo(ffStateFlow, { opacity: 0, scale: 0.98 }, { opacity: 1, scale: 1, duration: 0.3 });
+        }
+      });
+    }
+
+    // Approach 3: Split Slider Logic
+    const splitStage = document.getElementById('split-stage');
+    const afterLayer = document.getElementById('after-layer');
+    const splitHandle = document.getElementById('split-handle');
+
+    if (splitStage && afterLayer && splitHandle) {
+      function updateSplit(xPos) {
+        const rect = splitStage.getBoundingClientRect();
+        let percent = ((xPos - rect.left) / rect.width) * 100;
+        if (percent < 5) percent = 5;
+        if (percent > 95) percent = 95;
+        afterLayer.style.width = `${percent}%`;
+        splitHandle.style.left = `${percent}%`;
+      }
+
+      splitStage.addEventListener('mousemove', (e) => updateSplit(e.clientX));
+      splitStage.addEventListener('click', (e) => updateSplit(e.clientX));
+    }
+
+    // Approach 4: Accordion Matrix Logic
+    const accRows = document.querySelectorAll('.acc-row');
+    accRows.forEach(row => {
+      const header = row.querySelector('.acc-header');
+      if (header) {
+        header.addEventListener('click', () => {
+          accRows.forEach(r => {
+            if (r === row) r.classList.toggle('active');
+            else r.classList.remove('active');
+          });
+        });
+      }
     });
   });
 </script>
