@@ -657,6 +657,53 @@
   .final-cta .ar{font-family:var(--arabic);color:var(--ink-soft);font-size:16px;display:block;margin-bottom:26px;}
   .final-cta .sub{color:var(--ink-soft);margin-bottom:34px;}
 
+  /* Direct Contact Row Under CTA */
+  .cta-direct-contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 24px;
+    font-size: 14.5px;
+    color: var(--ink);
+  }
+  .cta-direct-contact a {
+    color: var(--green-deep);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .cta-direct-contact a:hover {
+    text-decoration: underline;
+  }
+  .cta-direct-contact .sep {
+    color: var(--line);
+    font-weight: 300;
+  }
+
+  .cta-direct-contact-dark {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 14px;
+    font-size: 13.5px;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .cta-direct-contact-dark a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .cta-direct-contact-dark a:hover {
+    text-decoration: underline;
+  }
+  .cta-direct-contact-dark .sep {
+    color: rgba(255, 255, 255, 0.3);
+  }
+  @media (max-width: 600px) {
+    .cta-direct-contact, .cta-direct-contact-dark { flex-direction: column; gap: 6px; }
+    .cta-direct-contact .sep, .cta-direct-contact-dark .sep { display: none; }
+  }
+
   /* ---------- Footer ---------- */
   footer{border-top:1px solid var(--line);padding:44px 0 30px;}
   .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;align-items:center;}
@@ -1438,6 +1485,11 @@
           <span>30-minute session, on your own training programs.</span>
           <span class="ar" lang="ar">نعرض لكم المنصة على بياناتكم الفعلية.</span>
         </p>
+        <div class="cta-direct-contact-dark">
+          <span><b>Phone:</b> <a href="tel:+96899365606">+968 9936 5606</a></span>
+          <span class="sep">·</span>
+          <span><b>Email:</b> <a href="mailto:citypearl@simplitrain.com">citypearl@simplitrain.com</a></span>
+        </div>
 
         <!-- STATS ROW MATCHING REFERENCE DESIGN -->
         <div class="hero-stats-row">
@@ -2151,6 +2203,11 @@
     <span class="ar" lang="ar">احجزوا عرضاً توضيحياً على بياناتكم الفعلية.</span>
     <p class="sub">30-minute interactive session. We'll show the platform working live on your training programs.</p>
     <a class="btn-primary" href="#">Book a Demo</a>
+    <div class="cta-direct-contact">
+      <span><b>Phone:</b> <a href="tel:+96899365606">+968 9936 5606</a></span>
+      <span class="sep">·</span>
+      <span><b>Email:</b> <a href="mailto:citypearl@simplitrain.com">citypearl@simplitrain.com</a></span>
+    </div>
   </div>
 </section>
 
