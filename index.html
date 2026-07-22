@@ -439,14 +439,14 @@
   .lang-toggle-row .tag{font-family:var(--mono);font-size:11px;background:rgba(255,255,255,.12);padding:3px 9px;border-radius:100px;}
   @media (max-width:820px){.lang-section{grid-template-columns:1fr;padding:40px 26px;}}
 
-  /* ---------- GSAP INTERACTIVE SECTOR RADAR CONSOLE ---------- */
+  /* ---------- CLASSY ENTERPRISE SECTOR SHOWCASE ---------- */
   .sector-radar-wrapper {
-    background: #0A120E;
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: #FFFFFF;
+    border: 1px solid var(--line);
     border-radius: 24px;
-    padding: 36px 40px;
-    color: #FFFFFF;
-    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+    padding: 44px 48px;
+    color: var(--ink);
+    box-shadow: 0 20px 45px -20px rgba(0, 0, 0, 0.08);
     position: relative;
     overflow: hidden;
     margin-top: 16px;
@@ -455,44 +455,44 @@
   .radar-nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
 
   .radar-pill {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    color: rgba(255, 255, 255, 0.8);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
     font-family: var(--sans);
     font-size: 13.5px;
     font-weight: 600;
-    padding: 10px 20px;
+    padding: 10px 22px;
     border-radius: 100px;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: all 0.25s ease;
   }
   .radar-pill:hover {
-    background: rgba(255, 255, 255, 0.14);
-    color: #FFFFFF;
-    transform: translateY(-1px);
+    background: var(--bg-alt);
+    color: var(--ink);
+    border-color: var(--ink-faint);
   }
   .radar-pill.active {
-    background: var(--gold);
-    color: #0A100C;
-    border-color: var(--gold);
-    box-shadow: 0 6px 20px rgba(185, 137, 62, 0.35);
+    background: var(--green-deep);
+    color: #FFFFFF;
+    border-color: var(--green-deep);
+    box-shadow: 0 8px 20px -5px rgba(14, 107, 79, 0.35);
   }
 
   .radar-progress-bar {
     width: 100%;
     height: 3px;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--line);
     border-radius: 100px;
-    margin-bottom: 32px;
+    margin-bottom: 36px;
     overflow: hidden;
   }
   .radar-progress-fill {
@@ -518,7 +518,7 @@
   .radar-grid {
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
-    gap: 36px;
+    gap: 40px;
     align-items: center;
   }
 
@@ -528,33 +528,34 @@
     color: var(--gold);
     letter-spacing: 0.08em;
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    font-weight: 600;
   }
 
   .radar-left h3 {
-    font-size: 24px;
-    color: #FFFFFF;
+    font-size: 26px;
+    color: var(--ink);
     font-family: var(--serif);
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
 
   .sector-check-list {
     list-style: none;
     padding: 0;
-    margin: 0 0 20px 0;
+    margin: 0 0 24px 0;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
   .sector-check-list li {
-    font-size: 14.5px;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 15px;
+    color: var(--ink-soft);
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
   }
   .sector-check-list .chk {
-    color: #2ECC71;
+    color: var(--green);
     font-weight: bold;
   }
 
@@ -566,57 +567,59 @@
   .sector-pill-tags .tag {
     font-family: var(--mono);
     font-size: 11px;
-    background: rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.85);
-    padding: 4px 12px;
+    background: var(--bg);
+    color: var(--ink-soft);
+    padding: 5px 14px;
     border-radius: 100px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid var(--line);
   }
 
-  /* Right Micro Console Widget */
+  /* Executive Compliance Summary Card (Classy Editorial Look) */
   .mini-console-card {
-    background: rgba(14, 22, 17, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 18px;
-    padding: 24px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    background: var(--green-deep);
+    color: #FFFFFF;
+    border: 1px solid var(--green-deep);
+    border-radius: 20px;
+    padding: 28px 26px;
+    box-shadow: 0 20px 40px -15px rgba(14, 107, 79, 0.3);
   }
   .console-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 14px;
-    margin-bottom: 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   }
   .dot-green {
     font-family: var(--mono);
     font-size: 11px;
-    color: #2ECC71;
-    letter-spacing: 0.06em;
+    color: #CDEBDD;
+    letter-spacing: 0.08em;
+    font-weight: 600;
   }
   .mono-code {
     font-family: var(--mono);
-    font-size: 10.5px;
-    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+    color: var(--gold);
   }
   .console-body {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
   }
   .console-metric {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 13.5px;
+    font-size: 14px;
   }
-  .console-metric span { color: rgba(255, 255, 255, 0.7); }
-  .console-metric b { font-family: var(--mono); font-size: 13px; color: #FFFFFF; }
+  .console-metric span { color: #DCEFE6; }
+  .console-metric b { font-family: var(--mono); font-size: 13.5px; color: #FFFFFF; }
 
   @media (max-width: 860px) {
-    .radar-grid { grid-template-columns: 1fr; gap: 24px; }
-    .sector-radar-wrapper { padding: 24px 20px; }
+    .radar-grid { grid-template-columns: 1fr; gap: 28px; }
+    .sector-radar-wrapper { padding: 30px 24px; }
   }
 
   /* ---------- Proof stats ---------- */
@@ -1861,25 +1864,25 @@
 
     <!-- GSAP RADAR SHOWCASE CONTAINER -->
     <div class="sector-radar-wrapper">
-      <!-- RADAR NAV PILLS BAR -->
+      <!-- RADAR NAV PILLS BAR (EMOJI-FREE ENTERPRISE STYLING) -->
       <div class="radar-nav">
         <button class="radar-pill active" data-sector="oilgas">
-          <span class="ico">🛢️</span> Oil &amp; Gas
+          Oil &amp; Gas
         </button>
         <button class="radar-pill" data-sector="healthcare">
-          <span class="ico">🏥</span> Healthcare
+          Healthcare
         </button>
         <button class="radar-pill" data-sector="gigaprojects">
-          <span class="ico">🏗️</span> Giga-Projects
+          Giga-Projects
         </button>
         <button class="radar-pill" data-sector="training">
-          <span class="ico">🏫</span> Training Centers
+          Training Centers
         </button>
         <button class="radar-pill" data-sector="aviation">
-          <span class="ico">✈️</span> Aviation
+          Aviation &amp; Logistics
         </button>
         <button class="radar-pill" data-sector="government">
-          <span class="ico">🏢</span> Government &amp; Enterprise
+          Government &amp; Enterprise
         </button>
       </div>
 
@@ -1909,12 +1912,12 @@
             <div class="radar-right">
               <div class="mini-console-card">
                 <div class="console-head">
-                  <span class="dot-green">● LIVE HSE STATUS</span>
-                  <span class="mono-code">RUH-RIG-8821</span>
+                  <span class="dot-green">EXECUTIVE BRIEFING</span>
+                  <span class="mono-code">HSE AUDIT SUMMARY</span>
                 </div>
                 <div class="console-body">
                   <div class="console-metric"><span>Contractors Certified</span><b>1,420 Active</b></div>
-                  <div class="console-metric"><span>H2S Recertification</span><b style="color:#2ECC71;">99.4% Pass Rate</b></div>
+                  <div class="console-metric"><span>H2S Recertification</span><b style="color:#CDEBDD;">99.4% Pass Rate</b></div>
                   <div class="console-metric"><span>IKTVA Local Spend</span><b style="color:var(--gold);">Audit Ready Export</b></div>
                 </div>
               </div>
@@ -1942,12 +1945,12 @@
             <div class="radar-right">
               <div class="mini-console-card">
                 <div class="console-head">
-                  <span class="dot-green">● SCFHS CREDIT TRACKER</span>
-                  <span class="mono-code">CME-MED-2026</span>
+                  <span class="dot-green">EXECUTIVE BRIEFING</span>
+                  <span class="mono-code">SCFHS CREDIT STATUS</span>
                 </div>
                 <div class="console-body">
                   <div class="console-metric"><span>CME Hours Logged</span><b>75 / 75 Verified</b></div>
-                  <div class="console-metric"><span>Hospital Network</span><b style="color:#2ECC71;">100% Compliant</b></div>
+                  <div class="console-metric"><span>Hospital Network</span><b style="color:#CDEBDD;">100% Compliant</b></div>
                   <div class="console-metric"><span>Auto Certificate</span><b style="color:var(--gold);">Issued in 4 sec</b></div>
                 </div>
               </div>
@@ -1975,13 +1978,13 @@
             <div class="radar-right">
               <div class="mini-console-card">
                 <div class="console-head">
-                  <span class="dot-green">● SITE SAFETY RADAR</span>
-                  <span class="mono-code">KSA-GIGA-04</span>
+                  <span class="dot-green">EXECUTIVE BRIEFING</span>
+                  <span class="mono-code">SITE SAFETY CLEARANCE</span>
                 </div>
                 <div class="console-body">
                   <div class="console-metric"><span>Active Subcontractors</span><b>38 Companies</b></div>
-                  <div class="console-metric"><span>Inductions Completed</span><b style="color:#2ECC71;">12,840 Workers</b></div>
-                  <div class="console-metric"><span>Gate Clearances</span><b style="color:var(--gold);">Live Syncing</b></div>
+                  <div class="console-metric"><span>Inductions Completed</span><b style="color:#CDEBDD;">12,840 Workers</b></div>
+                  <div class="console-metric"><span>Gate Clearances</span><b style="color:var(--gold);">Live Verified</b></div>
                 </div>
               </div>
             </div>
@@ -2008,12 +2011,12 @@
             <div class="radar-right">
               <div class="mini-console-card">
                 <div class="console-head">
-                  <span class="dot-green">● BRANCH UTILIZATION</span>
-                  <span class="mono-code">TVTC-INST-99</span>
+                  <span class="dot-green">EXECUTIVE BRIEFING</span>
+                  <span class="mono-code">BRANCH UTILIZATION</span>
                 </div>
                 <div class="console-body">
-                  <div class="console-metric"><span>Riyadh Branch</span><b style="color:#2ECC71;">92% Capacity</b></div>
-                  <div class="console-metric"><span>Jeddah Branch</span><b style="color:#2ECC71;">84% Capacity</b></div>
+                  <div class="console-metric"><span>Riyadh Branch</span><b style="color:#CDEBDD;">92% Capacity</b></div>
+                  <div class="console-metric"><span>Jeddah Branch</span><b style="color:#CDEBDD;">84% Capacity</b></div>
                   <div class="console-metric"><span>Dammam Branch</span><b style="color:var(--gold);">95% Capacity</b></div>
                 </div>
               </div>
@@ -2041,12 +2044,12 @@
             <div class="radar-right">
               <div class="mini-console-card">
                 <div class="console-head">
-                  <span class="dot-green">● GACA FLIGHT AUDIT</span>
-                  <span class="mono-code">GACA-AIR-102</span>
+                  <span class="dot-green">EXECUTIVE BRIEFING</span>
+                  <span class="mono-code">GACA AUDIT SUMMARY</span>
                 </div>
                 <div class="console-body">
                   <div class="console-metric"><span>Crew Recertified</span><b>480 Technical Staff</b></div>
-                  <div class="console-metric"><span>Expiration Risk</span><b style="color:#2ECC71;">0 Lapsed Licences</b></div>
+                  <div class="console-metric"><span>Expiration Risk</span><b style="color:#CDEBDD;">0 Lapsed Licences</b></div>
                   <div class="console-metric"><span>Safety Audit Status</span><b style="color:var(--gold);">100% Verified</b></div>
                 </div>
               </div>
@@ -2074,12 +2077,12 @@
             <div class="radar-right">
               <div class="mini-console-card">
                 <div class="console-head">
-                  <span class="dot-green">● QIWA AUDIT READINESS</span>
-                  <span class="mono-code">MHRSD-SA-2026</span>
+                  <span class="dot-green">EXECUTIVE BRIEFING</span>
+                  <span class="mono-code">QIWA &amp; NITAQAT AUDIT</span>
                 </div>
                 <div class="console-body">
                   <div class="console-metric"><span>Saudization Roles</span><b>269 Roles Verified</b></div>
-                  <div class="console-metric"><span>Qiwa Sync</span><b style="color:#2ECC71;">Passed Verification</b></div>
+                  <div class="console-metric"><span>Qiwa Sync</span><b style="color:#CDEBDD;">Passed Verification</b></div>
                   <div class="console-metric"><span>HRDF Rebate Logs</span><b style="color:var(--gold);">Automated Export</b></div>
                 </div>
               </div>
